@@ -1,17 +1,17 @@
 # SINO TIB — A4 katalog
 
-8 sahifali, chop etishga tayyor A4 katalog. Tayyor PDF: [SINO-TIB-katalog.pdf](SINO-TIB-katalog.pdf).
+24 sahifali, chop etishga tayyor A4 katalog. Tayyor PDF: [SINO-TIB-katalog.pdf](SINO-TIB-katalog.pdf).
 
 | Sahifa | Mazmuni |
 | --- | --- |
 | 1 | Muqova |
 | 2 | Mutaxassis: Abdushukur Ismoil Jurayev |
-| 3 | Brend haqida va mahsulotlar roʻyxati |
-| 4 | Kapsulalar: Gemorroy, Buqoq, Oshqozon |
-| 5 | Super Aktiv 777 (Tabiiy Kuvvalda) |
-| 6 | Erkak Immun 999 va Ayol Immun |
-| 7 | Buyurtma berish va tavsiyalar |
-| 8 | Orqa muqova: aloqa, QR kod |
+| 3 | Brend haqida va mundarija |
+| 4–22 | Har bir mahsulot alohida sahifada: oʻz rasmi, ikonkalar, maʼlumot 3 tilda (UZ, RU, EN) |
+| 23 | Buyurtma berish va tavsiyalar |
+| 24 | Orqa muqova: aloqa, QR kod |
+
+Mahsulot rasmlari (`img/mahsulot/`) GitHub'ga yuklangan asl rasmlarning oʻzi. Ular oʻzgartirilmagan, faqat ustiga matn qoʻyilgan.
 
 ## Matn va rasmlarni oʻzgartirish
 
@@ -23,17 +23,11 @@
 4. **PDF / Chop etish** → *Saqlash PDF sifatida* (Save as PDF). Qogʻoz: A4, chekka maydonlar (margins): *Yoʻq*, *Fon grafikasi* (Background graphics) yoqilgan boʻlsin.
 5. Oʻzgarishlarni GitHub'da saqlash uchun **HTML saqlash** tugmasi bilan `index.html` ni yuklab oling va shu papkadagi faylning oʻrniga yuklang.
 
-Sariq chiziq bilan belgilangan joylar (telefon, Telegram, Instagram) toʻldirilishi kerak. Bu chiziq faqat ekranda koʻrinadi, chop etilmaydi.
+## Toʻldirilishi kerak boʻlgan joylar
 
-## Rasmlar sifati
+Ekranda sariq punktir chiziq bilan belgilangan. Bu chiziq chop etilmaydi.
 
-`img/` papkasidagi rasmlar telefon skrinshotlari va postlardan kesib olingan, shuning uchun sifati past. Chop etishdan oldin ularni asl rasmlar bilan almashtiring: **xuddi shu nom bilan** `img/` papkasiga yuklang (masalan, `img/gemorroy.jpg`).
-
-| Fayl | Nima |
-| --- | --- |
-| `logo.png` | Logotip (shaffof fonli PNG yoki SVG eng yaxshisi) |
-| `shifokor.jpg` | Abdushukur Jurayev surati |
-| `mahsulotlar.jpg` | Barcha mahsulotlar birga (muqova) |
-| `kuvvalda.jpg` | Super Aktiv 777 katta surati |
-| `gemorroy.jpg`, `buqoq.jpg`, `oshqozon.jpg` | Kapsulalar |
-| `erkak-immun.jpg`, `ayol-immun.jpg`, `super-aktiv.jpg` | Bankalar |
+- **Nomi yozilmagan mahsulotlar** (18–22-sahifalar, "Mahsulot nomi"): kulrang idish, qora shisha va 3 ta toʻq sariq banka.
+- **Vazifasi aniq boʻlmagan mahsulotlar**: Giyohli damlama (koʻk), Sinomum, Tabon, Rosebud Tibet. Ularning tavsifi umumiy yozilgan.
+- **Tekshirish kerak**: "Buyrak damlamasi" va "Boʻgʻim moyi" nomlari yorliqdagi yozuvdan oʻqib olingan.
+- **Aloqa**: telefon, Telegram, Instagram.

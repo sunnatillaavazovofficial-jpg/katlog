@@ -2,7 +2,7 @@
 (() => {
   "use strict";
 
-  const VERSION = 1; // shablon o'zgarsa oshiriladi — eski saqlangan nusxa e'tiborga olinmaydi
+  const VERSION = 2; // shablon o'zgarsa oshiriladi — eski saqlangan nusxa e'tiborga olinmaydi
   const KEY = `sinotib-katalog-v${VERSION}`;
   const TEXT = ".page :is(h1, h2, h3, h4, p, li > span, dt, dd, b, small, figcaption, .e)";
 
