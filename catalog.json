@@ -1,0 +1,26 @@
+{
+  "shop": {
+    "name": "Katalog",
+    "tagline": "Sifatli mahsulotlar — qulay narxlarda",
+    "currency": "so'm",
+    "telegram": "",
+    "whatsapp": "",
+    "phone": "",
+    "instagram": "",
+    "address": ""
+  },
+  "newDays": 14,
+  "github": {
+    "owner": "sunnatillaavazovofficial-jpg",
+    "repo": "katlog",
+    "branch": ""
+  },
+  "products": {
+    "Mahsulot nomi": {
+      "description": "Bu yerga mahsulot haqida qo'shimcha ma'lumot yozing.",
+      "oldPrice": 200000,
+      "badge": "Chegirma",
+      "available": true
+    }
+  }
+}
