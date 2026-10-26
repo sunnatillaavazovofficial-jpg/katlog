@@ -413,16 +413,11 @@ ul, ol { list-style: none; }
 .toc i { flex: 1; }
 .toc__p { font: 600 8.5pt/1 var(--display); color: var(--gold-ink); }
 
-/* ---------- Mahsulot sahifasi: rasm + 3 tilda ma'lumot ---------- */
+/* ---------- Mahsulot: chapda rasm, o'ngda ma'lumot ---------- */
 
-.pp {
-  padding: 0;
-  background: var(--green);
-  color: #fff;
-  text-shadow: 0 1px 6px rgb(0 0 0 / 35%);
-}
+.photo { padding: 0; background: var(--green); }
 
-.pp__bg {
+.photo__img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -430,27 +425,50 @@ ul, ol { list-style: none; }
   object-fit: cover;
 }
 
-/* Matn o'qilishi uchun faqat yuqori va pastki chetlar biroz qoraytiriladi */
-.pp__shade {
+.photo__n {
+  position: absolute;
+  left: 12mm;
+  bottom: 9mm;
+  font: 600 8pt/1 var(--display);
+  letter-spacing: .05em;
+  color: rgb(255 255 255 / 85%);
+  text-shadow: 0 1px 6px rgb(0 0 0 / 50%);
+}
+
+.info {
+  padding: 0;
+  background: var(--green);
+  color: #fff;
+  text-shadow: 0 1px 6px rgb(0 0 0 / 30%);
+}
+
+.info__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Fon o'sha rasmning o'zi, matn o'qilishi uchun biroz qoraytirilgan */
+.info__shade {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg,
-    rgb(4 24 14 / 82%) 0%,
-    rgb(4 24 14 / 58%) 16%,
-    rgb(4 24 14 / 0%) 31%,
-    rgb(4 24 14 / 0%) 66%,
-    rgb(4 24 14 / 72%) 80%,
-    rgb(4 24 14 / 92%) 100%);
+  background:
+    linear-gradient(180deg, rgb(4 24 14 / 70%) 0%, rgb(4 24 14 / 45%) 35%, rgb(4 24 14 / 55%) 70%, rgb(4 24 14 / 85%) 100%);
 }
 
-.pp__head {
+.info__body {
   position: relative;
   z-index: 1;
-  padding: 11mm 14mm 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 13mm 16mm 11mm;
 }
 
-.pp__brand {
+.info__brand {
   display: flex;
   align-items: center;
   gap: 2.5mm;
@@ -458,9 +476,9 @@ ul, ol { list-style: none; }
   letter-spacing: .14em;
 }
 
-.pp__brand img { width: 9mm; }
+.info__brand img { width: 9mm; }
 
-.pp__brand::after {
+.info__brand::after {
   content: "";
   flex: 1;
   height: .3mm;
@@ -468,48 +486,51 @@ ul, ol { list-style: none; }
   background: rgb(255 255 255 / 55%);
 }
 
-.pp__eyebrow {
-  margin-top: 6mm;
-  font: 600 8pt/1 var(--display);
+.info__eyebrow {
+  margin-top: 11mm;
+  font: 600 8.5pt/1 var(--display);
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--gold-2);
 }
 
-.pp__title {
-  margin-top: 2.5mm;
-  font: 700 29pt/1.02 var(--display);
+.info__title {
+  margin-top: 3mm;
+  font: 700 31pt/1.05 var(--display);
   letter-spacing: -.005em;
   text-transform: uppercase;
   text-shadow: 0 2px 14px rgb(0 0 0 / 40%);
 }
 
-.pp__sub {
-  margin-top: 2mm;
-  font: 600 10.5pt/1.25 var(--display);
+.info__sub {
+  margin-top: 2.5mm;
+  font: 600 11pt/1.3 var(--display);
   letter-spacing: .04em;
   text-transform: uppercase;
 }
 
-.pp__icons {
-  display: flex;
-  gap: 2.5mm;
-  margin-top: 5mm;
+.info__icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6mm 4mm;
+  margin-top: 9mm;
+  padding: 7mm 0;
+  border-top: .3mm solid rgb(228 197 127 / 45%);
+  border-bottom: .3mm solid rgb(228 197 127 / 45%);
 }
 
-.pp__icons li {
-  width: 28mm;
-  display: flex;
-  flex-direction: column;
+.info__icons li {
+  display: grid;
+  grid-template-columns: 12mm 1fr;
+  grid-template-rows: auto auto auto;
+  column-gap: 3mm;
   align-items: center;
-  gap: .6mm;
-  text-align: center;
 }
 
 .medal {
-  width: 10mm;
-  height: 10mm;
-  margin-bottom: 1mm;
+  grid-row: 1 / 4;
+  width: 12mm;
+  height: 12mm;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -518,70 +539,135 @@ ul, ol { list-style: none; }
   color: #33240a;
 }
 
-.medal .ic { width: 5.6mm; height: 5.6mm; stroke-width: 1.7; }
+.medal .ic { width: 6.5mm; height: 6.5mm; stroke-width: 1.7; }
 
-.pp__icons b {
-  font: 700 6.6pt/1.15 var(--display);
+.info__icons b {
+  font: 700 7.6pt/1.2 var(--display);
   letter-spacing: .03em;
   text-transform: uppercase;
 }
 
-.pp__icons small {
-  font: 500 6pt/1.2 var(--body);
+.info__icons small {
+  font: 500 7pt/1.3 var(--body);
   color: rgb(255 255 255 / 80%);
 }
 
-.pp__foot {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  padding: 0 14mm 9mm;
+.info__langs {
+  display: grid;
+  gap: 8mm;
+  margin-top: 10mm;
 }
 
-.pp__langs {
+.lang {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6mm;
+  grid-template-columns: 11mm 1fr;
+  gap: 4mm;
+  align-items: start;
 }
 
 .lang__tag {
-  display: inline-block;
-  margin-bottom: 2mm;
-  padding: .9mm 2mm;
+  display: grid;
+  place-items: center;
+  height: 6mm;
   border-radius: 1mm;
   background: var(--gold-2);
   color: var(--green);
-  font: 700 6.5pt/1 var(--display);
-  letter-spacing: .12em;
+  font: 700 7.5pt/1 var(--display);
+  letter-spacing: .1em;
   text-shadow: none;
 }
 
 .lang h4 {
-  margin-bottom: 1.2mm;
-  font: 700 8pt/1.25 var(--display);
+  margin-bottom: 1.5mm;
+  font: 700 10.5pt/1.25 var(--display);
 }
 
 .lang p {
-  font-size: 7.6pt;
-  line-height: 1.45;
+  font-size: 10.2pt;
+  line-height: 1.55;
   color: rgb(255 255 255 / 90%);
 }
 
-.pp__bar {
+.info__specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5mm;
+  margin-top: auto;
+}
+
+.info__specs div {
+  padding-top: 3.5mm;
+  border-top: .3mm solid rgb(228 197 127 / 55%);
+}
+
+.info__specs dt {
+  font: 700 7.5pt/1.2 var(--display);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+}
+
+.info__specs dt small {
+  display: block;
+  margin-top: 1mm;
+  font: 500 6.8pt/1.2 var(--body);
+  letter-spacing: .02em;
+  text-transform: none;
+  color: rgb(255 255 255 / 70%);
+}
+
+.info__specs dd {
+  margin-top: 2.5mm;
+  font: 600 13pt/1.1 var(--display);
+}
+
+.info__bar {
   display: flex;
   align-items: center;
   gap: 2.5mm;
-  margin-top: 5.5mm;
+  margin-top: 9mm;
   font: 600 8pt/1 var(--display);
   letter-spacing: .14em;
 }
 
-.pp__bar img { width: 6.5mm; }
-.pp__bar i { flex: 1; height: .3mm; background: rgb(255 255 255 / 50%); }
-.pp__spec { color: var(--gold-2); letter-spacing: .06em; }
-.pp__n { color: rgb(255 255 255 / 70%); letter-spacing: .05em; }
+.info__bar img { width: 6.5mm; }
+.info__bar i { flex: 1; height: .3mm; background: rgb(255 255 255 / 50%); }
+.info__spec { color: var(--gold-2); letter-spacing: .06em; }
+.info__n { color: rgb(255 255 255 / 75%); letter-spacing: .05em; }
+
+/* ---------- Narxlar ro'yxati ---------- */
+
+.price {
+  width: 100%;
+  margin-top: 7mm;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.price th {
+  padding: 0 3mm 3mm;
+  text-align: left;
+  font: 600 7pt/1 var(--display);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: .4mm solid var(--green);
+}
+
+.price td {
+  padding: 1.5mm 3mm;
+  border-bottom: .25mm solid var(--line);
+  vertical-align: middle;
+  font-size: 9pt;
+}
+
+.price th:first-child, .price td:first-child { padding-left: 0; }
+.price th:last-child, .price td:last-child { padding-right: 0; text-align: right; }
+
+.price td b { display: block; font: 600 9.5pt/1.25 var(--display); color: var(--green); }
+.price td small { display: block; font-size: 7pt; line-height: 1.3; color: var(--muted); }
+.price__no { width: 8mm; color: var(--gold-ink); font: 600 8.5pt/1 var(--display); }
+.price__sum { width: 34mm; font: 600 10pt/1 var(--display); color: var(--green); }
 
 /* ---------- 7. Buyurtma ---------- */
 
@@ -795,6 +881,18 @@ ul, ol { list-style: none; }
   text-align: center;
   font-size: 7.5pt;
   color: rgb(243 239 228 / 55%);
+}
+
+/* Ekranda kitob ko'rinishi: juft sahifalar yonma-yon */
+@media screen {
+  .book--spread {
+    display: grid;
+    grid-template-columns: repeat(2, 210mm);
+    justify-content: center;
+    gap: 12mm 0;
+  }
+
+  .book--spread .page:first-child { grid-column: 2; }
 }
 
 /* ==========================================================================
