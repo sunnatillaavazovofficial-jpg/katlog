@@ -1,0 +1,947 @@
+/* ==========================================================================
+   SINO TIB — A4 katalog
+   Ranglar va shriftlar shu yerdagi o'zgaruvchilarda.
+   ========================================================================== */
+
+:root {
+  --green: #0c2f21;
+  --green-2: #134531;
+  --green-3: #1d5c41;
+  --gold: #c9a24c;
+  --gold-2: #e4c57f;
+  --gold-ink: #94701f;
+  --paper: #faf8f3;
+  --cream: #f1ece0;
+  --ink: #17221c;
+  --muted: #5e6a63;
+  --line: #e2dbca;
+
+  --display: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --script: "Great Vibes", "Brush Script MT", cursive;
+
+  --pad-x: 18mm;
+  --pad-top: 15mm;
+  --pad-bottom: 13mm;
+}
+
+@page { size: A4; margin: 0; }
+
+* { box-sizing: border-box; }
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  margin: 0;
+  background: #d8d4cb;
+  color: var(--ink);
+  font: 400 9.5pt/1.55 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+figure, blockquote, ul, ol, dl, dd, h1, h2, h3, h4, p { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+
+.ic {
+  width: 6mm;
+  height: 6mm;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Kitob va sahifa ---------- */
+
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10mm;
+  padding: 120px 0 80px;
+  zoom: var(--fit, 1);
+}
+
+.page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+  background: var(--paper);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 18px 50px -20px rgb(0 0 0 / 35%);
+}
+
+.page--dark {
+  background:
+    radial-gradient(120% 80% at 50% 40%, var(--green-2) 0%, var(--green) 55%, #071d14 100%);
+  color: #f3efe4;
+}
+
+/* ---------- Umumiy tipografiya ---------- */
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  margin-bottom: 4mm;
+  font: 600 7.5pt/1 var(--display);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 8mm;
+  height: .35mm;
+  background: currentColor;
+}
+
+.eyebrow--light { color: var(--gold-2); }
+
+.display {
+  font: 600 27pt/1.08 var(--display);
+  letter-spacing: -.015em;
+  color: var(--green);
+}
+
+.display--wide { max-width: 150mm; }
+.display--light { color: #fff; }
+
+.script {
+  font-family: var(--script);
+  font-weight: 400;
+  color: var(--gold-2);
+  line-height: 1;
+}
+
+.lead {
+  max-width: 150mm;
+  margin-top: 6mm;
+  font-size: 11.5pt;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.subhead {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  margin: 0 0 6mm;
+  font: 600 8pt/1 var(--display);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.subhead::after {
+  content: "";
+  flex: 1;
+  height: .25mm;
+  background: var(--line);
+}
+
+/* ---------- Logotip ---------- */
+
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 4mm;
+}
+
+.lockup__logo { width: 17mm; height: auto; }
+
+.lockup__name {
+  font: 600 25pt/1 var(--display);
+  letter-spacing: .12em;
+  color: #fff;
+}
+
+/* ---------- Sahifa sarlavhasi va raqami ---------- */
+
+.run {
+  display: flex;
+  align-items: center;
+  gap: 2.5mm;
+  padding-bottom: 4mm;
+  margin-bottom: 10mm;
+  border-bottom: .25mm solid var(--line);
+  font: 600 7pt/1 var(--display);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.run__logo { width: 6mm; }
+.run__brand { color: var(--green); }
+.run__label { margin-left: auto; color: var(--muted); letter-spacing: .16em; }
+
+.run--over {
+  position: relative;
+  z-index: 2;
+  border-color: rgb(255 255 255 / 25%);
+}
+
+.run--over .run__brand { color: #fff; }
+.run--over .run__label { color: rgb(255 255 255 / 75%); }
+
+.folio {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: auto;
+  padding-top: 4mm;
+  font: 500 7pt/1 var(--display);
+  letter-spacing: .14em;
+  color: var(--muted);
+}
+
+.folio__n { font-weight: 600; color: var(--green); letter-spacing: .05em; }
+.folio--light { color: rgb(255 255 255 / 60%); }
+.folio--light .folio__n { color: var(--gold-2); }
+
+/* ---------- 1. Muqova ---------- */
+
+.cover { padding-top: 20mm; text-align: center; align-items: center; }
+
+.cover__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7mm;
+}
+
+.cover__top .eyebrow { margin: 0; }
+.cover__top .eyebrow::after { content: ""; width: 8mm; height: .35mm; background: currentColor; }
+
+.cover__slogan {
+  margin-top: 10mm;
+  font-size: 40pt;
+}
+
+.cover__hero {
+  position: relative;
+  flex: 1;
+  width: calc(100% + 2 * var(--pad-x));
+  min-height: 0;
+  margin: 2mm calc(-1 * var(--pad-x)) 4mm;
+}
+
+.cover__hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent 100%);
+          mask-image: radial-gradient(closest-side, #000 72%, transparent 100%);
+}
+
+.cover__bottom {
+  width: 100%;
+  padding-top: 6mm;
+  border-top: .25mm solid rgb(228 197 127 / 35%);
+}
+
+.cover__lead {
+  max-width: 140mm;
+  margin: 0 auto 8mm;
+  font-size: 11pt;
+  line-height: 1.55;
+  color: rgb(243 239 228 / 85%);
+}
+
+.values--row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4mm;
+}
+
+.values--row li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5mm;
+  font: 600 7pt/1.35 var(--display);
+  letter-spacing: .04em;
+  color: rgb(243 239 228 / 85%);
+}
+
+.values--row .ic {
+  width: 11mm;
+  height: 11mm;
+  padding: 2.5mm;
+  border-radius: 50%;
+  border: .3mm solid var(--gold);
+  color: var(--gold-2);
+}
+
+/* ---------- 2. Mutaxassis ---------- */
+
+.doc {
+  display: grid;
+  grid-template-columns: 1fr 64mm;
+  gap: 10mm;
+  align-items: end;
+}
+
+.doc__role {
+  margin-top: 4mm;
+  font-size: 11pt;
+  color: var(--muted);
+  max-width: 85mm;
+}
+
+.doc__photo {
+  height: 92mm;
+  border-radius: 3mm;
+  overflow: hidden;
+  background: var(--green);
+}
+
+.doc__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 10mm;
+  border-top: .25mm solid var(--line);
+}
+
+.stats div { padding: 5mm 4mm 0 0; }
+.stats div + div { padding-left: 4mm; border-left: .25mm solid var(--line); }
+
+.stats dt {
+  font: 600 22pt/1 var(--display);
+  color: var(--green);
+}
+
+.stats dd {
+  margin-top: 2mm;
+  font-size: 8.5pt;
+  color: var(--muted);
+}
+
+.quote {
+  position: relative;
+  margin: 13mm 0 14mm;
+  padding: 8mm 9mm 8mm 13mm;
+  background: var(--cream);
+  border-radius: 3mm;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.quote::before {
+  content: "“";
+  position: absolute;
+  left: 3.5mm;
+  top: 2mm;
+  font: 600 30pt/1 var(--display);
+  color: var(--gold);
+}
+
+.areas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9mm 10mm;
+}
+
+.areas li { display: flex; gap: 4mm; }
+
+.areas .ic {
+  width: 10mm;
+  height: 10mm;
+  padding: 2.2mm;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--gold-2);
+}
+
+.areas h4 {
+  font: 600 9.5pt/1.3 var(--display);
+  color: var(--green);
+  margin-bottom: 1mm;
+}
+
+.areas p { font-size: 8.5pt; color: var(--muted); line-height: 1.5; }
+
+/* ---------- 3. Brend ---------- */
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 11mm 0 12mm;
+  border-top: .25mm solid var(--line);
+  border-bottom: .25mm solid var(--line);
+}
+
+.pillars li { padding: 7mm 4mm 7mm 0; }
+.pillars li + li { padding-left: 4mm; border-left: .25mm solid var(--line); }
+
+.pillars .ic { width: 8mm; height: 8mm; color: var(--gold-ink); margin-bottom: 4mm; }
+
+.pillars h4 {
+  font: 600 8.5pt/1.3 var(--display);
+  color: var(--green);
+  margin-bottom: 2mm;
+}
+
+.pillars p { font-size: 8pt; line-height: 1.5; color: var(--muted); }
+
+.index {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8mm 6mm;
+}
+
+.index li { position: relative; }
+
+.index figure {
+  height: 38mm;
+  margin-bottom: 3mm;
+  border-radius: 2.5mm;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, var(--green-3), var(--green) 75%);
+}
+
+.index figure, .tile { display: flex; justify-content: center; align-items: center; }
+
+.index h4 { font: 600 9.5pt/1.3 var(--display); color: var(--green); padding-right: 8mm; }
+.index p { font-size: 8pt; color: var(--muted); margin-top: .5mm; }
+
+.index__p {
+  position: absolute;
+  right: 0;
+  bottom: .6mm;
+  font: 600 8pt/1 var(--display);
+  color: var(--gold-ink);
+}
+
+/* ---------- Mahsulot kartochkasi ---------- */
+
+.sechead { margin-bottom: 8mm; }
+
+.sechead__sub {
+  margin-top: 3mm;
+  font-size: 10.5pt;
+  color: var(--muted);
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 52mm 1fr;
+  gap: 9mm;
+  padding: 6.5mm 0;
+  border-top: .25mm solid var(--line);
+}
+
+.product--lg { grid-template-columns: 62mm 1fr; padding: 8mm 0; }
+
+.tile {
+  height: 60mm;
+  border-radius: 3mm;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, var(--green-3), var(--green) 72%);
+}
+
+.product--lg .tile { height: 82mm; }
+
+.tile img, .index img {
+  height: 92%;
+  width: auto;
+  max-width: none;
+  -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000 62%, transparent 100%);
+          mask-image: radial-gradient(50% 50% at 50% 50%, #000 62%, transparent 100%);
+}
+
+.product__body { display: flex; flex-direction: column; min-width: 0; padding-top: 1mm; }
+
+.product__name {
+  font: 600 16pt/1.15 var(--display);
+  color: var(--green);
+}
+
+.product__tag {
+  margin-top: 1.5mm;
+  font: 600 8pt/1.3 var(--display);
+  letter-spacing: .06em;
+  color: var(--gold-ink);
+}
+
+.product__desc {
+  margin-top: 3.5mm;
+  font-size: 9.5pt;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  margin-top: 4.5mm;
+}
+
+.chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5mm;
+  padding: 1.4mm 3mm 1.4mm 2.2mm;
+  border-radius: 10mm;
+  background: var(--cream);
+  font: 600 7.5pt/1 var(--display);
+  color: var(--green);
+}
+
+.chips .ic { width: 4mm; height: 4mm; color: var(--gold-ink); }
+
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 3mm;
+  margin-top: auto;
+  padding-top: 4mm;
+}
+
+.specs li {
+  display: flex;
+  flex-direction: column;
+  gap: 1mm;
+  padding: 0 3.8mm;
+  border-left: .25mm solid var(--line);
+  white-space: nowrap;
+}
+
+.specs li:first-child { padding-left: 0; border-left: 0; }
+
+.specs span {
+  font: 600 6.5pt/1 var(--display);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.specs b { font: 600 9pt/1.2 var(--display); color: var(--ink); }
+.specs__price b { color: var(--gold-ink); }
+
+/* ---------- 5. Super Aktiv (tanlangan mahsulot) ---------- */
+
+.feature { padding-top: 0; background: var(--green); }
+
+.feature__hero {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 150mm;
+}
+
+.feature__hero img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 50%; }
+
+.feature__hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(7 29 20 / 55%) 0%, transparent 22%, transparent 55%, var(--green) 100%);
+}
+
+.feature .run { margin-top: var(--pad-top); }
+
+.feature__body {
+  position: relative;
+  z-index: 1;
+  margin-top: 112mm;
+}
+
+.feature__sub {
+  margin-top: 2.5mm;
+  font: 500 12pt/1.3 var(--display);
+  color: var(--gold-2);
+}
+
+.feature__desc {
+  max-width: 160mm;
+  margin-top: 5mm;
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: rgb(243 239 228 / 85%);
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5mm 6mm;
+  margin-top: 8mm;
+  padding: 7mm 0;
+  border-top: .25mm solid rgb(228 197 127 / 30%);
+  border-bottom: .25mm solid rgb(228 197 127 / 30%);
+}
+
+.benefits li {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  font: 600 9pt/1.25 var(--display);
+  color: #fff;
+}
+
+.benefits .ic {
+  width: 10mm;
+  height: 10mm;
+  padding: 2.2mm;
+  border-radius: 50%;
+  border: .3mm solid var(--gold);
+  color: var(--gold-2);
+}
+
+.specs--light { margin-top: 7mm; padding-top: 0; }
+.specs--light li { border-color: rgb(255 255 255 / 18%); }
+.specs--light span { color: rgb(243 239 228 / 60%); }
+.specs--light b { color: #fff; }
+.specs--light .specs__price b { color: var(--gold-2); }
+
+/* ---------- 7. Buyurtma ---------- */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5mm;
+  margin: 10mm 0 12mm;
+  counter-reset: step;
+}
+
+.steps li {
+  position: relative;
+  counter-increment: step;
+  padding: 6mm 5mm 6mm;
+  border-radius: 3mm;
+  background: var(--cream);
+}
+
+.steps li::before {
+  content: "0" counter(step);
+  position: absolute;
+  right: 5mm;
+  top: 5.5mm;
+  font: 600 9pt/1 var(--display);
+  color: var(--gold-ink);
+}
+
+.steps .ic { width: 8mm; height: 8mm; color: var(--green); margin-bottom: 8mm; }
+
+.steps h4 {
+  font: 600 9.5pt/1.25 var(--display);
+  color: var(--green);
+  margin-bottom: 2mm;
+}
+
+.steps p { font-size: 8.5pt; line-height: 1.5; color: var(--muted); }
+
+.advice {
+  display: grid;
+  grid-template-columns: 1fr 66mm;
+  gap: 10mm;
+  align-items: start;
+}
+
+.ticks { display: grid; gap: 3.5mm; }
+
+.ticks li {
+  position: relative;
+  padding-left: 7mm;
+  font-size: 9.5pt;
+  line-height: 1.5;
+}
+
+.ticks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.1mm;
+  width: 3.6mm;
+  height: 2mm;
+  border-left: .45mm solid var(--gold-ink);
+  border-bottom: .45mm solid var(--gold-ink);
+  transform: rotate(-45deg);
+}
+
+.consult {
+  padding: 8mm 7mm;
+  border-radius: 3mm;
+  background: var(--green);
+  color: #f3efe4;
+}
+
+.consult .ic { width: 9mm; height: 9mm; color: var(--gold-2); margin-bottom: 5mm; }
+
+.consult h3 {
+  font: 600 13pt/1.2 var(--display);
+  color: #fff;
+  margin-bottom: 3mm;
+}
+
+.consult p { font-size: 9pt; line-height: 1.55; color: rgb(243 239 228 / 80%); }
+
+.consult__phone {
+  margin-top: 6mm;
+  padding-top: 5mm;
+  border-top: .25mm solid rgb(255 255 255 / 18%);
+  font: 600 12pt/1 var(--display) !important;
+  color: var(--gold-2) !important;
+}
+
+/* Sahifa pastidagi brend lentasi */
+.band {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 92mm;
+  align-items: center;
+  margin-top: auto;
+  height: 62mm;
+  padding-left: 10mm;
+  border-radius: 3mm;
+  overflow: hidden;
+  background: radial-gradient(90% 120% at 75% 50%, var(--green-2), var(--green) 70%);
+  color: #f3efe4;
+}
+
+.band__slogan { font-size: 25pt; line-height: 1.15; }
+
+.band p:not(.script) {
+  margin-top: 4mm;
+  font-size: 9pt;
+  line-height: 1.5;
+  color: rgb(243 239 228 / 75%);
+  max-width: 70mm;
+}
+
+.band figure { position: relative; height: 100%; }
+
+.band img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  -webkit-mask-image: radial-gradient(closest-side, #000 70%, transparent 100%);
+          mask-image: radial-gradient(closest-side, #000 70%, transparent 100%);
+}
+
+/* ---------- 8. Orqa muqova ---------- */
+
+.back { padding-top: 20mm; padding-bottom: 16mm; }
+
+.back__center { margin-block: auto; }
+
+.back__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.back__logo { width: 32mm; }
+
+.back__name {
+  margin-top: 8mm;
+  font: 600 30pt/1 var(--display);
+  letter-spacing: .14em;
+  color: #fff;
+}
+
+.back__slogan { margin-top: 7mm; font-size: 30pt; }
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12mm;
+  align-items: center;
+  padding: 10mm 0;
+  border-top: .25mm solid rgb(228 197 127 / 30%);
+  border-bottom: .25mm solid rgb(228 197 127 / 30%);
+}
+
+.contact__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7mm 8mm;
+}
+
+.contact__list li { display: flex; align-items: center; gap: 3.5mm; }
+
+.contact__list .ic {
+  width: 10mm;
+  height: 10mm;
+  padding: 2.2mm;
+  border-radius: 50%;
+  border: .3mm solid var(--gold);
+  color: var(--gold-2);
+}
+
+.contact__list small {
+  display: block;
+  font: 600 6.5pt/1 var(--display);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgb(243 239 228 / 55%);
+  margin-bottom: 1.5mm;
+}
+
+.contact__list p { font: 600 10.5pt/1.2 var(--display); color: #fff; }
+
+.qr { display: flex; flex-direction: column; align-items: center; gap: 2.5mm; }
+
+.qr img {
+  width: 30mm;
+  height: 30mm;
+  padding: 2.5mm;
+  border-radius: 2mm;
+  background: #fff;
+}
+
+.qr figcaption {
+  max-width: 32mm;
+  text-align: center;
+  font-size: 7pt;
+  line-height: 1.35;
+  color: rgb(243 239 228 / 65%);
+}
+
+.disclaimer {
+  margin-top: 12mm;
+  text-align: center;
+  font-size: 7.5pt;
+  color: rgb(243 239 228 / 55%);
+}
+
+/* ==========================================================================
+   Muharrir (faqat ekranda)
+   ========================================================================== */
+
+.panel {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 50;
+  width: min(760px, calc(100% - 24px));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  padding: 10px 12px 10px 16px;
+  border-radius: 16px;
+  background: rgb(12 47 33 / 94%);
+  color: #f3efe4;
+  font: 500 14px/1.4 var(--body);
+  box-shadow: 0 10px 40px -10px rgb(0 0 0 / 45%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.panel__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 600 14px/1 var(--display);
+  letter-spacing: .02em;
+}
+
+.panel__title img { width: 26px; }
+
+.panel__actions { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+
+.pbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  font: 600 13px/1 var(--body);
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s;
+}
+
+.pbtn:hover { background: rgb(255 255 255 / 8%); }
+
+.pbtn svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pbtn--primary, .pbtn[aria-pressed="true"] {
+  background: var(--gold-2);
+  border-color: var(--gold-2);
+  color: var(--green);
+}
+
+.pbtn--primary:hover, .pbtn[aria-pressed="true"]:hover { background: #ecd29a; }
+
+.panel__hint {
+  flex-basis: 100%;
+  font-size: 12.5px;
+  color: rgb(243 239 228 / 70%);
+}
+
+/* Tahrirlash rejimi */
+.editing [contenteditable="true"] {
+  outline: 1px dashed transparent;
+  outline-offset: 2px;
+  border-radius: 2px;
+  cursor: text;
+  transition: outline-color .15s, background-color .15s;
+}
+
+.editing [contenteditable="true"]:hover { outline-color: rgb(201 162 76 / 80%); }
+.editing [contenteditable="true"]:focus { outline: 2px solid var(--gold); background: rgb(228 197 127 / 12%); }
+.editing img[data-img] { cursor: pointer; }
+.editing img[data-img]:hover { filter: brightness(1.08); outline: 2px dashed var(--gold); outline-offset: -2px; }
+
+/* To'ldirilishi kerak bo'lgan joylar ekranda belgilanadi */
+@media screen {
+  .ph { box-shadow: inset 0 -2px 0 #f0b33a; }
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 60;
+  translate: -50% 12px;
+  padding: 11px 18px;
+  border-radius: 12px;
+  background: var(--green);
+  color: #fff;
+  font: 600 14px/1.3 var(--body);
+  box-shadow: 0 10px 30px -8px rgb(0 0 0 / 40%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, translate .2s;
+}
+
+.toast.is-visible { opacity: 1; translate: -50% 0; }
+
+/* ---------- Chop etish ---------- */
+
+@media print {
+  body { background: none; }
+  .no-print { display: none !important; }
+  .book { display: block; padding: 0; gap: 0; zoom: 1; }
+  .page { box-shadow: none; break-after: page; page-break-after: always; }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+}

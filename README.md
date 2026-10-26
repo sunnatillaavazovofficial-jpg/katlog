@@ -1,6 +1,7 @@
 # Katalog
 
-Rasmlardan avtomatik tuziladigan mahsulotlar katalogi (GitHub Pages uchun).
+- **[katalog-a4/](katalog-a4/)** — SINO TIB uchun chop etishga tayyor A4 katalog (PDF + tahrirlanadigan HTML).
+- Asosiy papka — rasmlardan avtomatik tuziladigan veb-katalog (GitHub Pages uchun).
 
 ## Qanday ishlaydi
 

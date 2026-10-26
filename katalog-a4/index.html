@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SINO TIB — Mahsulotlar katalogi</title>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="katalog.css">
+</head>
+<body>
+
+<!-- Boshqaruv paneli (chop etishda ko'rinmaydi) -->
+<div class="panel no-print" id="panel">
+  <div class="panel__title">
+    <img src="img/logo.png" alt="">
+    <span>Katalog muharriri</span>
+  </div>
+  <div class="panel__actions">
+    <button type="button" class="pbtn" id="btn-edit" aria-pressed="false">
+      <svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16Z"/><path d="m13.5 6.5 4 4"/></svg>
+      <span>Tahrirlash</span>
+    </button>
+    <button type="button" class="pbtn" id="btn-download">
+      <svg viewBox="0 0 24 24"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg>
+      <span>HTML saqlash</span>
+    </button>
+    <button type="button" class="pbtn" id="btn-reset">
+      <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v5h5"/></svg>
+      <span>Asliga qaytarish</span>
+    </button>
+    <button type="button" class="pbtn pbtn--primary" id="btn-print">
+      <svg viewBox="0 0 24 24"><path d="M7 9V4h10v5M7 17H5a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2"/><path d="M7 14h10v6H7Z"/></svg>
+      <span>PDF / Chop etish</span>
+    </button>
+  </div>
+  <p class="panel__hint" id="hint">«Tahrirlash»ni bosing: matnni bosib o'zgartiring, rasmni bosib boshqasiga almashtiring. O'zgarishlar shu brauzerda avtomatik saqlanadi.</p>
+</div>
+
+<!-- Ikonkalar -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 10.5 5 20 4.5 19.5 14 14 19 5 19Z"/><path d="M5 19 13.5 10.5"/></symbol>
+    <symbol id="i-capsule" viewBox="0 0 24 24"><path d="M10.5 20.5a4.95 4.95 0 0 1-7-7l6-6a4.95 4.95 0 0 1 7 7Z"/><path d="m7.5 10.5 6 6"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.3a4.2 4.2 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20Z"/><path d="M7.5 12.5h2.5l1.2-2.2 1.8 4 1.2-1.8h2.3"/></symbol>
+    <symbol id="i-care" viewBox="0 0 24 24"><path d="M12 3.5 5 6.5v5c0 4.4 3 7.8 7 9.5 4-1.7 7-5.1 7-9.5v-5Z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5 5 6.5v5c0 4.4 3 7.8 7 9.5 4-1.7 7-5.1 7-9.5v-5Z"/><path d="M12 8.5v7M8.5 12h7"/></symbol>
+    <symbol id="i-man" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 20.5a7 7 0 0 1 14 0"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.5 3 5.5 13.5h6l-1 7.5 8-10.5h-6Z"/></symbol>
+    <symbol id="i-joint" viewBox="0 0 24 24"><path d="M9.2 6.6a2.6 2.6 0 1 0-3.6 1.6L15.8 18.4a2.6 2.6 0 1 0 1.6-3.6Z"/><path d="M5.6 8.2a2.6 2.6 0 1 1 2-3.9M18.4 15.8a2.6 2.6 0 1 1-3.9 2"/></symbol>
+    <symbol id="i-hair" viewBox="0 0 24 24"><path d="M6 21c0-7 1.5-13.5 6-17.5M11 21c0-5.5 1.2-10 4.5-13.5M16 21c0-3.8.8-6.8 3-9"/></symbol>
+    <symbol id="i-steth" viewBox="0 0 24 24"><path d="M6 3.5H5v5.5a4.5 4.5 0 0 0 9 0V3.5h-1"/><path d="M9.5 13.5v1.5a5 5 0 0 0 10 0v-2.5"/><circle cx="19.5" cy="10.5" r="2"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2.5-5H21"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7.5h14M12 4.5l-7 3M12 4.5l7 3"/><path d="m5 7.5-2.5 6a2.6 2.6 0 0 0 5 0Z"/><path d="m19 7.5-2.5 6a2.6 2.6 0 0 0 5 0Z"/></symbol>
+    <symbol id="i-dumbbell" viewBox="0 0 24 24"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 19.5a6 6 0 0 1 12 0M15.5 15a4.5 4.5 0 0 1 6 4.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5.5 3.5h3.5l2 5-2.5 1.5a11 11 0 0 0 5.5 5.5l1.5-2.5 5 2v3.5a2 2 0 0 1-2 2A16.5 16.5 0 0 1 3.5 5.5a2 2 0 0 1 2-2Z"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M21 4.5 3 11.5l5.5 2 2 6 3-3.5 4.5 3.5Z"/><path d="m8.5 13.5 8-5.5"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.5 3.5 5.3 3.5 8.5s-1 6-3.5 8.5c-2.5-2.5-3.5-5.3-3.5-8.5s1-6 3.5-8.5Z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5h16v10H9l-5 4Z"/><path d="M8 10.5h8"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><circle cx="4.8" cy="6.5" r="1"/><circle cx="4.8" cy="12" r="1"/><circle cx="4.8" cy="17.5" r="1"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12.5H6Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5l-8.5-4Z"/><path d="m3.5 7.5 8.5 4 8.5-4M12 11.5v9"/></symbol>
+  </defs>
+</svg>
+
+<main class="book" id="book">
+
+  <!-- ============ 1. MUQOVA ============ -->
+  <section class="page page--dark cover">
+    <div class="cover__top">
+      <div class="lockup lockup--lg">
+        <img class="lockup__logo" data-img src="img/logo.png" alt="SINO TIB logotipi">
+        <span class="lockup__name">SINO TIB</span>
+      </div>
+      <p class="eyebrow eyebrow--light">Mahsulotlar katalogi · 2026</p>
+    </div>
+
+    <h1 class="script cover__slogan">Sogʻligʻingiz ishonchli qoʻllarda</h1>
+
+    <figure class="cover__hero">
+      <img data-img src="img/mahsulotlar.jpg" alt="SINO TIB mahsulotlari">
+    </figure>
+
+    <div class="cover__bottom">
+      <p class="cover__lead">Tabiiy giyohlardan tayyorlangan biologik faol qoʻshimchalar toʻplami — salomatligingizga kundalik gʻamxoʻrlik uchun.</p>
+      <ul class="values values--row">
+        <li><svg class="ic"><use href="#i-leaf"/></svg><span class="e">Tabiiy giyohlar asosida</span></li>
+        <li><svg class="ic"><use href="#i-capsule"/></svg><span class="e">Biologik faol qoʻshimchalar</span></li>
+        <li><svg class="ic"><use href="#i-heart"/></svg><span class="e">Sogʻlom hayot sari</span></li>
+        <li><svg class="ic"><use href="#i-care"/></svg><span class="e">Salomatlikka kundalik gʻamxoʻrlik</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 2. MUTAXASSIS ============ -->
+  <section class="page">
+    <header class="run"><img class="run__logo" src="img/logo.png" alt=""><span class="run__brand">SINO TIB</span><span class="run__label e">Mutaxassis</span></header>
+
+    <div class="doc">
+      <div class="doc__text">
+        <p class="eyebrow">SINO TIB mutaxassisi</p>
+        <h2 class="display">Abdushukur Ismoil Jurayev</h2>
+        <p class="doc__role">Professional dietolog va ovqatlanish boʻyicha mutaxassis</p>
+        <dl class="stats">
+          <div><dt>30+</dt><dd>Yillik tajriba</dd></div>
+          <div><dt>66</dt><dd>Yosh</dd></div>
+          <div><dt>10+</dt><dd>Chet el davlatlarida</dd></div>
+        </dl>
+      </div>
+      <figure class="doc__photo">
+        <img data-img src="img/shifokor.jpg" alt="Abdushukur Ismoil Jurayev">
+      </figure>
+    </div>
+
+    <blockquote class="quote">
+      <p>Dietologiya va ovqatlanish boʻyicha 30 yildan ortiq maxsus tajribaga ega boʻlgan tabib Abdushukur koʻplab mamlakatlarda shaxsiylashtirilgan parhez aralashuvi va sogʻliqni saqlashning yaxlit yondashuvlari orqali minglab odamlarning hayotini oʻzgartirdi.</p>
+    </blockquote>
+
+    <h3 class="subhead">Mutaxassislik yoʻnalishlari</h3>
+    <ul class="areas">
+      <li><svg class="ic"><use href="#i-steth"/></svg><div><h4>Klinik ovqatlanish</h4><p>Turli xil kasalliklar va metabolik buzilishlar uchun maxsus dietik davolash.</p></div></li>
+      <li><svg class="ic"><use href="#i-pulse"/></svg><div><h4>Turmush tarzi tibbiyoti</h4><p>Dietani oʻzgartirish va turmush tarziga oid choralar orqali profilaktika.</p></div></li>
+      <li><svg class="ic"><use href="#i-scale"/></svg><div><h4>Vazn boshqaruvi</h4><p>Shaxsiy ehtiyojlarga moslashtirilgan vazn kamaytirish va vazn orttirish dasturlari.</p></div></li>
+      <li><svg class="ic"><use href="#i-dumbbell"/></svg><div><h4>Sport ovqatlanishi</h4><p>Sportchilar uchun maqsadli ovqatlanish strategiyalari orqali natijalarni yaxshilash.</p></div></li>
+      <li><svg class="ic"><use href="#i-leaf"/></svg><div><h4>Holistik sogʻliq</h4><p>Optimal sogʻliq uchun anʼanaviy donolikni zamonaviy ovqatlanish ilmi bilan uygʻunlashtirish.</p></div></li>
+      <li><svg class="ic"><use href="#i-people"/></svg><div><h4>Jamoat salomatligi</h4><p>Ovqatlanish boʻyicha jamoat salomatligi tashabbuslari va taʼlim dasturlari.</p></div></li>
+    </ul>
+
+    <footer class="folio"><span class="e">abdushukur.uz</span><span class="folio__n">02</span></footer>
+  </section>
+
+  <!-- ============ 3. BREND VA MUNDARIJA ============ -->
+  <section class="page">
+    <header class="run"><img class="run__logo" src="img/logo.png" alt=""><span class="run__brand">SINO TIB</span><span class="run__label e">Brend haqida</span></header>
+
+    <p class="eyebrow">SINO TIB haqida</p>
+    <h2 class="display display--wide">Tabiat kuchi — har kungi gʻamxoʻrlik</h2>
+    <p class="lead">SINO TIB — tabiiy giyohlardan tayyorlangan biologik faol qoʻshimchalar brendi. Mahsulotlarimiz salomatlikni kundalik qoʻllab-quvvatlash, organizmni tetiklashtirish va sogʻlom turmush tarzini shakllantirishga moʻljallangan.</p>
+
+    <ul class="pillars">
+      <li><svg class="ic"><use href="#i-leaf"/></svg><h4>Tabiiy giyohlar asosida</h4><p>Tarkibi tabiiy oʻsimlik xomashyosidan tayyorlangan.</p></li>
+      <li><svg class="ic"><use href="#i-capsule"/></svg><h4>Biologik faol qoʻshimchalar</h4><p>Kundalik ratsionni toʻldiruvchi foydali moddalar manbai.</p></li>
+      <li><svg class="ic"><use href="#i-heart"/></svg><h4>Sogʻlom hayot sari</h4><p>Toʻgʻri ovqatlanish va faol hayot tarzini qoʻllab-quvvatlaydi.</p></li>
+      <li><svg class="ic"><use href="#i-care"/></svg><h4>Kundalik gʻamxoʻrlik</h4><p>Butun oila salomatligi uchun maxsus mahsulotlar.</p></li>
+    </ul>
+
+    <h3 class="subhead">Mahsulotlar</h3>
+    <ol class="index">
+      <li><figure><img data-img src="img/gemorroy.jpg" alt=""></figure><h4>Gemorroy dorisi</h4><p>Kapsula · 90 ta</p><span class="index__p">04</span></li>
+      <li><figure><img data-img src="img/buqoq.jpg" alt=""></figure><h4>Buqoq dorisi</h4><p>Kapsula · 90 ta</p><span class="index__p">04</span></li>
+      <li><figure><img data-img src="img/oshqozon.jpg" alt=""></figure><h4>Oshqozon dorisi</h4><p>Kapsula · 90 ta</p><span class="index__p">04</span></li>
+      <li><figure><img data-img src="img/super-aktiv.jpg" alt=""></figure><h4>Super Aktiv 777</h4><p>Aralashma · ±75 gr</p><span class="index__p">05</span></li>
+      <li><figure><img data-img src="img/erkak-immun.jpg" alt=""></figure><h4>Erkak Immun 999</h4><p>Aralashma · ±500 gr</p><span class="index__p">06</span></li>
+      <li><figure><img data-img src="img/ayol-immun.jpg" alt=""></figure><h4>Ayol Immun</h4><p>Aralashma · 500 gr</p><span class="index__p">06</span></li>
+    </ol>
+
+    <footer class="folio"><span class="e">abdushukur.uz</span><span class="folio__n">03</span></footer>
+  </section>
+
+  <!-- ============ 4. KAPSULALAR ============ -->
+  <section class="page">
+    <header class="run"><img class="run__logo" src="img/logo.png" alt=""><span class="run__brand">SINO TIB</span><span class="run__label e">Kapsulalar</span></header>
+
+    <div class="sechead">
+      <p class="eyebrow">Kapsulalar toʻplami</p>
+      <h2 class="display">Tabiiy kapsulalar</h2>
+      <p class="sechead__sub">100% tabiiy tarkib · har bir qutida 90 ta kapsula</p>
+    </div>
+
+    <article class="product">
+      <figure class="tile"><img data-img src="img/gemorroy.jpg" alt="Gemorroy dorisi"></figure>
+      <div class="product__body">
+        <h3 class="product__name">Gemorroy dorisi</h3>
+        <p class="product__tag">Qon tomirlari va ichak salomatligi uchun</p>
+        <p class="product__desc">Tabiiy giyohlar asosida tayyorlangan kapsulalar. Qon tomirlari va ichak faoliyatini qoʻllab-quvvatlashga, noqulaylik hissini kamaytirishga yordam beradi.</p>
+        <ul class="specs">
+          <li><span>Shakli</span><b>Kapsula</b></li>
+          <li><span>Miqdori</span><b>90 ta</b></li>
+          <li><span>Tarkibi</span><b>100% tabiiy</b></li>
+          <li class="specs__price"><span>Narxi</span><b>Narxini soʻrang</b></li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="product">
+      <figure class="tile"><img data-img src="img/buqoq.jpg" alt="Buqoq dorisi"></figure>
+      <div class="product__body">
+        <h3 class="product__name">Buqoq dorisi</h3>
+        <p class="product__tag">Qalqonsimon bez salomatligi uchun</p>
+        <p class="product__desc">Qalqonsimon bez faoliyatini qoʻllab-quvvatlash uchun tabiiy giyohlar asosidagi kapsulalar. Organizmda modda almashinuvi muvozanatini saqlashga yordam beradi.</p>
+        <ul class="specs">
+          <li><span>Shakli</span><b>Kapsula</b></li>
+          <li><span>Miqdori</span><b>90 ta</b></li>
+          <li><span>Tarkibi</span><b>100% tabiiy</b></li>
+          <li class="specs__price"><span>Narxi</span><b>Narxini soʻrang</b></li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="product">
+      <figure class="tile"><img data-img src="img/oshqozon.jpg" alt="Oshqozon dorisi"></figure>
+      <div class="product__body">
+        <h3 class="product__name">Oshqozon dorisi</h3>
+        <p class="product__tag">Oshqozon va hazm tizimi uchun</p>
+        <p class="product__desc">Hazm tizimi uchun tabiiy giyohlar asosidagi kapsulalar. Hazm jarayonini yengillashtirish va oshqozon salomatligini qoʻllab-quvvatlashga yordam beradi.</p>
+        <ul class="specs">
+          <li><span>Shakli</span><b>Kapsula</b></li>
+          <li><span>Miqdori</span><b>90 ta</b></li>
+          <li><span>Tarkibi</span><b>100% tabiiy</b></li>
+          <li class="specs__price"><span>Narxi</span><b>Narxini soʻrang</b></li>
+        </ul>
+      </div>
+    </article>
+
+    <footer class="folio"><span class="e">abdushukur.uz</span><span class="folio__n">04</span></footer>
+  </section>
+
+  <!-- ============ 5. SUPER AKTIV 777 ============ -->
+  <section class="page page--dark feature">
+    <figure class="feature__hero">
+      <img data-img src="img/kuvvalda.jpg" alt="Super Aktiv 777">
+    </figure>
+    <header class="run run--over"><img class="run__logo" src="img/logo.png" alt=""><span class="run__brand">SINO TIB</span><span class="run__label e">Erkaklar salomatligi</span></header>
+
+    <div class="feature__body">
+      <p class="eyebrow eyebrow--light">Tabiiy Kuvvalda</p>
+      <h2 class="display display--light">Super Aktiv 777</h2>
+      <p class="feature__sub">Erkaklar kuchini oshiruvchi vosita</p>
+      <p class="feature__desc">Tabiiy KUVVALDA — erkaklar quvvati, jismoniy kuch va jinsiy faollikni qoʻllab-quvvatlashga moʻljallangan tabiiy mahsulot. Charchoqni kamaytirish, organizmni tetiklashtirish va umumiy salomatlikni mustahkamlashga yordam beradi.</p>
+
+      <ul class="benefits">
+        <li><svg class="ic"><use href="#i-shield"/></svg><span class="e">Immunitet</span></li>
+        <li><svg class="ic"><use href="#i-man"/></svg><span class="e">Erkaklar salomatligi</span></li>
+        <li><svg class="ic"><use href="#i-bolt"/></svg><span class="e">Kuch-quvvat</span></li>
+        <li><svg class="ic"><use href="#i-joint"/></svg><span class="e">Boʻgʻim va mushaklar</span></li>
+        <li><svg class="ic"><use href="#i-hair"/></svg><span class="e">Soch parvarishi</span></li>
+        <li><svg class="ic"><use href="#i-leaf"/></svg><span class="e">Tabiiy tarkib</span></li>
+      </ul>
+
+      <ul class="specs specs--light">
+        <li><span>Hajmi</span><b>±75 gr</b></li>
+        <li><span>Shakli</span><b>Aralashma</b></li>
+        <li><span>Tarkibi</span><b>100% tabiiy</b></li>
+        <li class="specs__price"><span>Narxi</span><b>Narxini soʻrang</b></li>
+      </ul>
+    </div>
+
+    <footer class="folio folio--light"><span class="e">abdushukur.uz</span><span class="folio__n">05</span></footer>
+  </section>
+
+  <!-- ============ 6. IMMUN TO'PLAMI ============ -->
+  <section class="page">
+    <header class="run"><img class="run__logo" src="img/logo.png" alt=""><span class="run__brand">SINO TIB</span><span class="run__label e">Immunitet</span></header>
+
+    <div class="sechead">
+      <p class="eyebrow">Immunitet uchun</p>
+      <h2 class="display">Immun toʻplami</h2>
+      <p class="sechead__sub">Erkaklar va ayollar uchun maxsus tabiiy aralashmalar</p>
+    </div>
+
+    <article class="product product--lg">
+      <figure class="tile"><img data-img src="img/erkak-immun.jpg" alt="Erkak Immun 999"></figure>
+      <div class="product__body">
+        <h3 class="product__name">Erkak Immun 999</h3>
+        <p class="product__tag">Erkaklar immuniteti va quvvati uchun</p>
+        <p class="product__desc">Erkaklar organizmi uchun tabiiy giyohlar asosidagi aralashma. Immunitetni mustahkamlash, kuch-quvvat va tetiklikni qoʻllab-quvvatlashga yordam beradi.</p>
+        <ul class="chips">
+          <li><svg class="ic"><use href="#i-shield"/></svg><span class="e">Immunitet</span></li>
+          <li><svg class="ic"><use href="#i-bolt"/></svg><span class="e">Kuch-quvvat</span></li>
+          <li><svg class="ic"><use href="#i-man"/></svg><span class="e">Erkaklar salomatligi</span></li>
+        </ul>
+        <ul class="specs">
+          <li><span>Hajmi</span><b>±500 gr</b></li>
+          <li><span>Shakli</span><b>Aralashma</b></li>
+          <li><span>Tarkibi</span><b>100% tabiiy</b></li>
+          <li class="specs__price"><span>Narxi</span><b>Narxini soʻrang</b></li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="product product--lg">
+      <figure class="tile"><img data-img src="img/ayol-immun.jpg" alt="Ayol Immun"></figure>
+      <div class="product__body">
+        <h3 class="product__name">Ayol Immun</h3>
+        <p class="product__tag">Ayollar immuniteti va tetikligi uchun</p>
+        <p class="product__desc">Ayollar organizmi uchun maxsus tabiiy aralashma. Immunitetni mustahkamlash, tetiklik va umumiy salomatlikni qoʻllab-quvvatlashga yordam beradi.</p>
+        <ul class="chips">
+          <li><svg class="ic"><use href="#i-shield"/></svg><span class="e">Immunitet</span></li>
+          <li><svg class="ic"><use href="#i-sun"/></svg><span class="e">Tetiklik</span></li>
+          <li><svg class="ic"><use href="#i-heart"/></svg><span class="e">Ayollar salomatligi</span></li>
+        </ul>
+        <ul class="specs">
+          <li><span>Hajmi</span><b>500 gr</b></li>
+          <li><span>Shakli</span><b>Aralashma</b></li>
+          <li><span>Tarkibi</span><b>100% tabiiy</b></li>
+          <li class="specs__price"><span>Narxi</span><b>Narxini soʻrang</b></li>
+        </ul>
+      </div>
+    </article>
+
+    <footer class="folio"><span class="e">abdushukur.uz</span><span class="folio__n">06</span></footer>
+  </section>
+
+  <!-- ============ 7. BUYURTMA VA TAVSIYALAR ============ -->
+  <section class="page">
+    <header class="run"><img class="run__logo" src="img/logo.png" alt=""><span class="run__brand">SINO TIB</span><span class="run__label e">Buyurtma</span></header>
+
+    <p class="eyebrow">Buyurtma berish</p>
+    <h2 class="display display--wide">Toʻrt oddiy qadam</h2>
+
+    <ol class="steps">
+      <li><svg class="ic"><use href="#i-chat"/></svg><h4>Maslahat oling</h4><p>Mutaxassis bilan bogʻlanib, oʻzingizga mos mahsulotni aniqlang.</p></li>
+      <li><svg class="ic"><use href="#i-list"/></svg><h4>Mahsulotni tanlang</h4><p>Katalogdan kerakli mahsulot nomini belgilab oling.</p></li>
+      <li><svg class="ic"><use href="#i-bag"/></svg><h4>Buyurtma bering</h4><p>Telefon yoki Telegram orqali buyurtma qoldiring.</p></li>
+      <li><svg class="ic"><use href="#i-box"/></svg><h4>Qabul qiling</h4><p>Yetkazib berish shartlari operator bilan kelishiladi.</p></li>
+    </ol>
+
+    <div class="advice">
+      <div class="advice__col">
+        <h3 class="subhead">Muhim tavsiyalar</h3>
+        <ul class="ticks">
+          <li>Qoʻllashdan oldin mutaxassis bilan maslahatlashing.</li>
+          <li>Tavsiya etilgan miqdordan oshirmang.</li>
+          <li>Homiladorlik va emizish davrida ehtiyotkorlik bilan qoʻllang.</li>
+          <li>Tarkibiy qismlarga individual sezuvchanlik boʻlsa, qoʻllamang.</li>
+          <li>Quruq, salqin va quyosh nuri tushmaydigan joyda saqlang.</li>
+          <li>Bolalar ololmaydigan joyda saqlang.</li>
+        </ul>
+      </div>
+      <aside class="consult">
+        <svg class="ic"><use href="#i-steth"/></svg>
+        <h3>Shaxsiy konsultatsiya</h3>
+        <p>Abdushukur Jurayev sizga mos mahsulot va ovqatlanish rejasini tanlashda yordam beradi.</p>
+        <p class="consult__phone ph">+998 __ ___ __ __</p>
+      </aside>
+    </div>
+
+    <div class="band">
+      <div>
+        <p class="script band__slogan">Sogʻligʻingiz ishonchli qoʻllarda</p>
+        <p>Tabiiy giyohlardan tayyorlangan biologik faol qoʻshimchalar — butun oila salomatligi uchun.</p>
+      </div>
+      <figure><img data-img src="img/mahsulotlar.jpg" alt="SINO TIB mahsulotlari"></figure>
+    </div>
+
+    <footer class="folio"><span class="e">abdushukur.uz</span><span class="folio__n">07</span></footer>
+  </section>
+
+  <!-- ============ 8. ORQA MUQOVA ============ -->
+  <section class="page page--dark back">
+    <div class="back__center">
+      <img class="back__logo" data-img src="img/logo.png" alt="SINO TIB logotipi">
+      <p class="back__name">SINO TIB</p>
+      <p class="script back__slogan">Sogʻligʻingiz ishonchli qoʻllarda</p>
+    </div>
+
+    <div class="contact">
+      <ul class="contact__list">
+        <li><svg class="ic"><use href="#i-phone"/></svg><div><small>Telefon</small><p class="ph">+998 __ ___ __ __</p></div></li>
+        <li><svg class="ic"><use href="#i-telegram"/></svg><div><small>Telegram</small><p class="ph">@username</p></div></li>
+        <li><svg class="ic"><use href="#i-insta"/></svg><div><small>Instagram</small><p class="ph">@username</p></div></li>
+        <li><svg class="ic"><use href="#i-globe"/></svg><div><small>Veb-sayt</small><p>abdushukur.uz</p></div></li>
+      </ul>
+      <figure class="qr">
+        <img src="img/qr.svg" alt="abdushukur.uz QR kodi">
+        <figcaption>Saytga oʻtish uchun skanerlang</figcaption>
+      </figure>
+    </div>
+
+    <p class="disclaimer">Biologik faol qoʻshimcha. Dori vositasi hisoblanmaydi. Qoʻllashdan oldin mutaxassis bilan maslahatlashing.</p>
+  </section>
+
+</main>
+
+<div class="toast no-print" id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="file" accept="image/*" hidden>
+<script src="katalog.js"></script>
+</body>
+</html>
