@@ -2,7 +2,7 @@
 (() => {
   "use strict";
 
-  const VERSION = 3; // shablon o'zgarsa oshiriladi — eski saqlangan nusxa e'tiborga olinmaydi
+  const VERSION = 4; // shablon o'zgarsa oshiriladi — eski saqlangan nusxa e'tiborga olinmaydi
   const KEY = `sinotib-katalog-v${VERSION}`;
   const TEXT = ".page :is(h1, h2, h3, h4, p, li > span, dt, dd, b, small, figcaption, td:not(:has(*)), .e)";
 
@@ -118,12 +118,8 @@
   /* ---------- Ekranga moslash ---------- */
 
   function fit() {
-    // Keng ekranda juft sahifalar yonma-yon (kitob kabi), telefonda bittadan
-    const mm = 96 / 25.4;
-    const spread = window.innerWidth >= 900;
-    book.classList.toggle("book--spread", spread);
-    const width = (spread ? 420 : 210) * mm;
-    const scale = Math.min(1, (window.innerWidth - 24) / width);
+    const pageWidth = 210 * 96 / 25.4; // 210mm pikselda
+    const scale = Math.min(1, (window.innerWidth - 24) / pageWidth);
     book.style.setProperty("--fit", scale.toFixed(3));
   }
 
