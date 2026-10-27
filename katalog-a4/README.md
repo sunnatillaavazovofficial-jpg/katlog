@@ -11,7 +11,22 @@
 
 `img/mahsulot/` — GitHub'ga yuklangan asl rasmlar, o‘zgartirilmagan.
 
-Shriftlar statik TTF: PDF CorelDRAW’da ham ochiladi.
+Shriftlar statik TTF (`fonts/`).
+
+## CorelDRAW uchun SVG
+
+[SINO-TIB-katalog-SVG.zip](SINO-TIB-katalog-SVG.zip) — har bir sahifa alohida SVG (A4):
+
+- `1-matnli` — matn tahrirlanadi; avval `shriftlar/` dagi 8 ta TTF ni o‘rnating.
+- `2-egri chiziqli` — matn egri chiziqlarga aylantirilgan, shriftsiz ham bir xil ko‘rinadi.
+
+Katalog o‘zgargach SVG’ni qayta yasash:
+
+```
+python3 -m http.server 8766 &                       # katalog-a4 papkasida
+node tools/svg-eksport.js /tmp/svg-xom              # matn o‘rni + fon rasmlari
+python3 tools/svg-yasash.py /tmp/svg-xom fonts svg  # svg/matn va svg/egri
+```
 
 ## Matn va rasmlarni o‘zgartirish
 
