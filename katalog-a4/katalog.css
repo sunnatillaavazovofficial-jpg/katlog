@@ -429,7 +429,7 @@ ul, ol { list-style: none; }
 
 .inf__title {
   margin-top: 4mm;
-  font: 700 30pt/1.04 var(--display);
+  font: 700 32pt/1.04 var(--display);
   letter-spacing: -.005em;
   text-transform: uppercase;
   text-shadow: 0 2px 14px rgb(0 0 0 / 40%);
@@ -438,87 +438,55 @@ ul, ol { list-style: none; }
 .inf__langs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6mm 9mm;
-  margin-top: 6.5mm;
+  gap: 7mm 9mm;
+  margin-top: 7mm;
 }
 
 .inf__lang {
-  padding-top: 4mm;
+  padding-top: 4.5mm;
   border-top: .4mm solid rgb(228 197 127 / 65%);
 }
 
 .inf__lang .lang__tag {
-  margin-bottom: 2.6mm;
-  padding: 1.1mm 2.6mm;
-  font-size: 8.5pt;
+  margin-bottom: 3mm;
+  padding: 1.2mm 2.8mm;
+  font-size: 9pt;
 }
 
+/* --s — katalog.js har bir sahifa uchun tanlaydigan matn o'lchami koeffitsienti */
 .inf__lang h4 {
-  margin-bottom: 1.5mm;
-  font: 700 11pt/1.25 var(--display);
+  margin-bottom: 1.8mm;
+  font: 700 calc(12.5pt * var(--s, 1))/1.25 var(--display);
 }
 
 .inf__lang p {
-  font-size: 9.2pt;
-  line-height: 1.48;
-  color: rgb(255 255 255 / 94%);
+  font-size: calc(10.4pt * var(--s, 1));
+  line-height: 1.5;
+  color: rgb(255 255 255 / 95%);
 }
 
 .inf__secs {
   display: grid;
-  gap: 1.8mm;
-  margin-top: 3mm;
+  gap: calc(2.2mm * var(--s, 1));
+  margin-top: calc(3.5mm * var(--s, 1));
 }
 
 .inf__secs dt {
-  margin-bottom: .6mm;
-  font: 700 7pt/1.2 var(--display);
+  margin-bottom: .7mm;
+  font: 700 calc(8pt * var(--s, 1))/1.2 var(--display);
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--gold-2);
 }
 
 .inf__secs dd {
-  font-size: 8.3pt;
-  line-height: 1.42;
-  color: rgb(255 255 255 / 88%);
+  font-size: calc(9.4pt * var(--s, 1));
+  line-height: 1.45;
+  color: rgb(255 255 255 / 90%);
 }
 
-.inf__specs {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 9mm;
-  margin-top: auto;
-  padding-top: 5mm;
-}
-
-.inf__specs div {
-  padding-top: 3.5mm;
-  border-top: .3mm solid rgb(228 197 127 / 55%);
-}
-
-.inf__specs dt {
-  font: 700 8.6pt/1.2 var(--display);
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--gold-2);
-}
-
-.inf__specs dt small {
-  display: block;
-  margin-top: 1.2mm;
-  font: 500 7.4pt/1.3 var(--body);
-  letter-spacing: .02em;
-  text-transform: none;
-  color: rgb(255 255 255 / 75%);
-}
-
-.inf__specs dd {
-  margin-top: 2.5mm;
-  font: 600 14pt/1.1 var(--display);
-}
-
-.inf .pp__bar { margin-top: 8mm; }
+/* Pastki logotipli chiziq — sahifa oxirida */
+.inf .pp__bar { margin-top: auto; padding-top: 6mm; }
 
 /* ---------- Narxlar ro'yxati ---------- */
 

@@ -53,7 +53,7 @@ Ekranda sariq punktir chiziq bilan belgilangan (bosmaga chiqmaydi). Matnda `[kva
 | Tekshirish: “Buyrak damlamasi” va “Bo‘g‘im moyi” nomlari yorliqdan o‘qilgan | 17–18, 21–22 |
 | **Tarkibi** — har bir mahsulotda, 4 tilda | barcha juft sahifalar |
 | **Qo‘llash usuli** (dozasi) — Bo‘g‘im moyidan tashqari hammasida, 4 tilda | barcha juft sahifalar |
-| Hajmi (noma’lum bo‘lganlarida) va **Narxi** | juft sahifalar pastida, 40-sahifa |
+| Hajmi (noma’lum bo‘lganlarida) va **Narxi** | 40-sahifa (narxlar ro‘yxati) |
 | Telefon, Telegram, Instagram | 39, 41 |
 
 Saqlash va qarshi ko‘rsatmalar — biologik faol qo‘shimchalar uchun standart yozuv; o‘z yorlig‘ingizdagidan farq qilsa, almashtiring.

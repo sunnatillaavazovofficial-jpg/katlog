@@ -2,7 +2,7 @@
 (() => {
   "use strict";
 
-  const VERSION = 7; // shablon o'zgarsa oshiriladi — eski saqlangan nusxa e'tiborga olinmaydi
+  const VERSION = 8; // shablon o'zgarsa oshiriladi — eski saqlangan nusxa e'tiborga olinmaydi
   const KEY = `sinotib-katalog-v${VERSION}`;
   const TEXT = ".page :is(h1, h2, h3, h4, p, li > span, dt, dd, b, small, figcaption, td:not(:has(*)), .e)";
 
@@ -58,7 +58,7 @@
   editBtn.addEventListener("click", () => setEditing(!editing));
 
   book.addEventListener("input", (e) => {
-    if (e.target.closest(".pp__title, .pp__sub")) fitText();
+    if (e.target.closest(".pp__title, .pp__sub, .inf__body")) fitText();
     save();
   });
 
@@ -149,6 +149,15 @@
       while (el.scrollWidth > el.clientWidth + 1 && size > min) {
         size -= 0.5;
         el.style.fontSize = `${size}px`;
+      }
+    });
+    // Ma'lumot sahifasi: matn imkon qadar katta, lekin sahifaga sig'adigan qilib tanlanadi
+    book.querySelectorAll(".inf__body").forEach((body) => {
+      let s = 1.08;
+      body.style.setProperty("--s", s);
+      while (body.scrollHeight > body.clientHeight + 1 && s > 0.8) {
+        s = Math.round((s - 0.02) * 100) / 100;
+        body.style.setProperty("--s", s);
       }
     });
   }

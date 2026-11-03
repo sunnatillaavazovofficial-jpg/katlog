@@ -260,7 +260,6 @@ def sections(p):
     return (("ing", ing), ("use", use), ("store", STORE), ("warn", WARN))
 
 
-SPECS = (("Hajmi", "Объём", "Volume", "Көлемі"), ("Narxi", "Цена", "Price", "Бағасы"))
 FIRST_PAGE = 1
 e = html.escape
 
@@ -283,11 +282,6 @@ def spread(p, n):
                 f'<dl class="inf__secs">{secs}</dl></div>')
 
     langs = "\n".join(block(code, tag) for code, tag in LANGS)
-    vol = VOL.get(p["img"])
-    specs = "\n".join(
-        f'        <div><dt>{e(l[0])}<small>{e(" · ".join(l[1:]))}</small></dt>'
-        f'<dd{"" if (k == 0 and vol) else " class=\"ph\""}>{e(v)}</dd></div>'
-        for k, (l, v) in enumerate(zip(SPECS, (vol or "—", "— so‘m"))))
     return f"""  <!-- ============ {n}–{n + 1}. {p['title'].upper()} ============ -->
   <section class="page pp">
     <img class="pp__bg" data-img src="img/mahsulot/{p['img']}.jpg" alt="{e(p['title'])}">
@@ -315,9 +309,6 @@ def spread(p, n):
       <div class="inf__langs">
 {langs}
       </div>
-      <dl class="inf__specs">
-{specs}
-      </dl>
       <div class="pp__bar"><img src="img/logo.png" alt=""><span>SINO TIB</span><i></i><span class="pp__n">{n + 1:02d}</span></div>
     </div>
   </section>
