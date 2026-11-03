@@ -1,6 +1,6 @@
 """layout.json + fon rasmlaridan CorelDRAW uchun SVG sahifalar yasaydi.
 
-matn/  — matn tahrirlanadi (shriftlar o'rnatilgan bo'lishi kerak)
+matn/  — matn tahrirlanadi (shriftlar o'rnatilgan bo'lishi kerak); har bir paragraf bitta matn obyekti
 egri/  — matn egri chiziqlarga aylantirilgan (shriftsiz ham bir xil ko'rinadi)
 """
 import base64
@@ -54,16 +54,19 @@ def line_text(run, ln):
     return t.upper() if run["upper"] else t
 
 
-def text_svg(run, ln):
+def text_svg(run):
+    """Bitta paragraf — bitta <text>, har bir qator alohida <tspan> (Corelda bitta matn obyekti)."""
     (_, _), (_, name, weight) = face(run)
     fill, a = color(run["color"])
-    attrs = [f'x="{num(ln["chars"][0]["x"])}"', f'y="{num(ln["baseline"])}"',
-             f'font-family="{name}"', f'font-weight="{weight}"', f'font-size="{num(run["size"])}"', f'fill="{fill}"']
+    attrs = [f'font-family="{name}"', f'font-weight="{weight}"', f'font-size="{num(run["size"])}"', f'fill="{fill}"']
     if a < 1:
         attrs.append(f'fill-opacity="{num(a)}"')
     if run["ls"]:
         attrs.append(f'letter-spacing="{num(run["ls"])}"')
-    return f'  <text {" ".join(attrs)} xml:space="preserve">{escape(line_text(run, ln))}</text>'
+    spans = "".join(
+        f'<tspan x="{num(ln["chars"][0]["x"])}" y="{num(ln["baseline"])}">{escape(line_text(run, ln))}</tspan>'
+        for ln in run["lines"])
+    return f'  <text {" ".join(attrs)} xml:space="preserve">{spans}</text>'
 
 
 def curves_svg(run, ln):
@@ -110,8 +113,11 @@ for i, pg in enumerate(data["pages"], 1):
             f'  <image x="0" y="0" width="{w}" height="{h}" preserveAspectRatio="none" '
             f'xlink:href="data:image/jpeg;base64,{bg}"/>\n')
     icons = "\n".join(icon_svg(ic, data["symbols"]) for ic in pg["icons"])
-    for variant, fn in (("matn", text_svg), ("egri", curves_svg)):
-        body = "\n".join(filter(None, (fn(r, ln) for r in pg["runs"] for ln in r["lines"])))
+    for variant in ("matn", "egri"):
+        if variant == "matn":
+            body = "\n".join(text_svg(r) for r in pg["runs"])
+        else:
+            body = "\n".join(filter(None, (curves_svg(r, ln) for r in pg["runs"] for ln in r["lines"])))
         with open(os.path.join(OUT, variant, f"{i:02d}.svg"), "w", encoding="utf-8") as f:
             f.write(head + icons + "\n" + body + "\n</svg>\n")
 print("sahifalar:", len(data["pages"]))

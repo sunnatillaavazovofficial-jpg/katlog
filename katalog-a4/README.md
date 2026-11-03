@@ -4,7 +4,7 @@
 
 | Sahifa | Mazmuni |
 | --- | --- |
-| 1–38 | Har bir mahsulot ikki sahifada: chapda (toq) asl rasm, ustida nomi va ikonkalar; o‘ngda (juft) xuddi shu fonda 4 tilda (UZ, RU, EN, KZ) to‘liq ma’lumot |
+| 1–38 | Har bir mahsulot ikki sahifada: chapda (toq) asl rasm, ustida nomi va ikonkalar; o‘ngda (juft) xuddi shu fonda 4 tilda (UZ, RU, EN, KZ): tavsif, tarkibi, qo‘llash usuli, saqlash, qarshi ko‘rsatmalar |
 | 39 | Buyurtma berish va tavsiyalar |
 | 40 | Narxlar ro‘yxati |
 | 41 | Orqa muqova: aloqa, QR kod |
@@ -18,13 +18,14 @@ Shriftlar statik TTF (`fonts/`): Montserrat, Inter (qozoq kirilini to‘liq qo�
 
 [SINO-TIB-katalog-SVG.zip](SINO-TIB-katalog-SVG.zip) — har bir sahifa alohida SVG (A4):
 
-- `1-matnli` — matn tahrirlanadi; avval `shriftlar/` dagi 8 ta TTF ni o‘rnating.
+- `1-matnli` — matn tahrirlanadi (har bir paragraf bitta matn obyekti); avval `shriftlar/` dagi 8 ta TTF ni o‘rnating.
 - `2-egri chiziqli` — matn egri chiziqlarga aylantirilgan, shriftsiz ham bir xil ko‘rinadi.
 
-Katalog o‘zgargach SVG’ni qayta yasash:
+Katalog o‘zgargach sahifalar va SVG’ni qayta yasash (`katalog-a4` papkasida):
 
 ```
-python3 -m http.server 8766 &                       # katalog-a4 papkasida
+python3 tools/sahifalar.py index.html               # mahsulot sahifalari (matnlar shu faylda)
+python3 -m http.server 8766 &
 node tools/svg-eksport.js /tmp/svg-xom              # matn o‘rni + fon rasmlari
 python3 tools/svg-yasash.py /tmp/svg-xom fonts svg  # svg/matn va svg/egri
 ```
@@ -41,10 +42,18 @@ python3 tools/svg-yasash.py /tmp/svg-xom fonts svg  # svg/matn va svg/egri
 
 ## To‘ldirilishi kerak bo‘lgan joylar
 
-Ekranda sariq punktir chiziq bilan belgilangan. Bu chiziq chop etilmaydi.
+Ekranda sariq punktir chiziq bilan belgilangan (bosmaga chiqmaydi). Matnda `[kvadrat qavs]` ichida yozilgan — Corel’da ham shu yozuvni topib almashtirasiz.
 
-- **Nomi yozilmagan mahsulotlar** (29–38-sahifalar, "Mahsulot nomi"): kulrang idish, qora shisha va 3 ta to‘q sariq banka.
-- **Vazifasi aniq bo‘lmagan mahsulotlar**: Giyohli damlama (ko‘k), Sinomum, Tabon, Rosebud Tibet. Ularning tavsifi umumiy yozilgan.
-- **Tekshirish kerak**: "Buyrak damlamasi" va "Bo‘g‘im moyi" nomlari yorliqdagi yozuvdan o‘qib olingan.
-- **Narxlar**: har bir ma’lumot sahifasida va 40-sahifadagi ro‘yxatda.
-- **Aloqa**: telefon, Telegram, Instagram.
+| Nima | Qayerda |
+| --- | --- |
+| Mahsulot nomi va tavsifi (5 ta: kulrang idish, qora shisha, 3 ta to‘q sariq banka) | 29–38-sahifalar |
+| Tavsifi umumiy yozilgan: Giyohli damlama (ko‘k), Sinomum, Tabon, Rosebud Tibet | 19–20, 23–28 |
+| Tekshirish: “Buyrak damlamasi” va “Bo‘g‘im moyi” nomlari yorliqdan o‘qilgan | 17–18, 21–22 |
+| **Tarkibi** — har bir mahsulotda, 4 tilda | barcha juft sahifalar |
+| **Qo‘llash usuli** (dozasi) — Bo‘g‘im moyidan tashqari hammasida, 4 tilda | barcha juft sahifalar |
+| Hajmi (noma’lum bo‘lganlarida) va **Narxi** | juft sahifalar pastida, 40-sahifa |
+| Telefon, Telegram, Instagram | 39, 41 |
+
+Saqlash va qarshi ko‘rsatmalar — biologik faol qo‘shimchalar uchun standart yozuv; o‘z yorlig‘ingizdagidan farq qilsa, almashtiring.
+
+Matnlar `tools/sahifalar.py` boshidagi ro‘yxatlarda: shu yerda o‘zgartirib, buyruqni qayta ishga tushirsangiz, hamma sahifa birdaniga yangilanadi.

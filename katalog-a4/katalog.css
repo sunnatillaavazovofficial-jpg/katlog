@@ -394,8 +394,8 @@ ul, ol { list-style: none; }
 }
 
 .inf__title {
-  margin-top: 3mm;
-  font: 700 33pt/1.04 var(--display);
+  margin-top: 4mm;
+  font: 700 30pt/1.04 var(--display);
   letter-spacing: -.005em;
   text-transform: uppercase;
   text-shadow: 0 2px 14px rgb(0 0 0 / 40%);
@@ -404,37 +404,58 @@ ul, ol { list-style: none; }
 .inf__langs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 11mm 10mm;
-  margin-top: 12mm;
+  gap: 6mm 9mm;
+  margin-top: 6.5mm;
 }
 
 .inf__lang {
-  padding-top: 5mm;
+  padding-top: 4mm;
   border-top: .4mm solid rgb(228 197 127 / 65%);
 }
 
 .inf__lang .lang__tag {
-  margin-bottom: 3.5mm;
-  padding: 1.3mm 3mm;
-  font-size: 9pt;
+  margin-bottom: 2.6mm;
+  padding: 1.1mm 2.6mm;
+  font-size: 8.5pt;
 }
 
 .inf__lang h4 {
-  margin-bottom: 3mm;
-  font: 700 13.5pt/1.25 var(--display);
+  margin-bottom: 1.5mm;
+  font: 700 11pt/1.25 var(--display);
 }
 
 .inf__lang p {
-  font-size: 11.2pt;
-  line-height: 1.6;
+  font-size: 9.2pt;
+  line-height: 1.48;
   color: rgb(255 255 255 / 94%);
+}
+
+.inf__secs {
+  display: grid;
+  gap: 1.8mm;
+  margin-top: 3mm;
+}
+
+.inf__secs dt {
+  margin-bottom: .6mm;
+  font: 700 7pt/1.2 var(--display);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+}
+
+.inf__secs dd {
+  font-size: 8.3pt;
+  line-height: 1.42;
+  color: rgb(255 255 255 / 88%);
 }
 
 .inf__specs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5mm;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9mm;
   margin-top: auto;
+  padding-top: 5mm;
 }
 
 .inf__specs div {
@@ -459,8 +480,8 @@ ul, ol { list-style: none; }
 }
 
 .inf__specs dd {
-  margin-top: 3mm;
-  font: 600 15pt/1.1 var(--display);
+  margin-top: 2.5mm;
+  font: 600 14pt/1.1 var(--display);
 }
 
 .inf .pp__bar { margin-top: 8mm; }
