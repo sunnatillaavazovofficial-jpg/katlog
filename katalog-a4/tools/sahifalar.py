@@ -270,8 +270,7 @@ def spread(p, n):
     ph = ' class="ph"' if p.get("ph") else ""
     ph_title = " ph" if p.get("ph_title") or p.get("ph") else ""
     icons = "\n".join(
-        f'        <li><span class="medal"><svg class="ic"><use href="#{i}"/></svg></span>'
-        f"<b>{e(uz)}</b><small>{e(ru)}</small><small>{e(en)}</small><small>{e(kz)}</small></li>"
+        f'        <li><span class="medal"><svg class="ic"><use href="#{i}"/></svg></span><b>{e(uz)}</b></li>'
         for i, uz, ru, en, kz in p["icons"])
 
     def block(code, tag):
@@ -294,7 +293,7 @@ def spread(p, n):
     <img class="pp__bg" data-img src="img/mahsulot/{p['img']}.jpg" alt="{e(p['title'])}">
     <div class="pp__shade" aria-hidden="true"></div>
     <header class="pp__head">
-      <div class="pp__brand"><img src="img/logo.png" alt=""><span>SINO TIB</span></div>
+      <div class="pp__top"><img src="img/logo.png" alt=""><span>SINO TIB</span></div>
       <h2 class="pp__title{ph_title}">{e(p['title'])}</h2>
       <p class="pp__sub{' ph' if p.get('ph') else ''}">{e(p['uz'][0])}</p>
       <ul class="pp__icons">
@@ -302,7 +301,8 @@ def spread(p, n):
       </ul>
     </header>
     <div class="pp__foot">
-      <div class="pp__bar"><img src="img/logo.png" alt=""><span>SINO TIB</span><i></i><span class="pp__spec e">{e(vol or p['spec'])}</span><span class="pp__n">{n:02d}</span></div>
+      <p class="pp__desc{' ph' if p.get('ph') else ''}">{e(p['uz'][1])}</p>
+      <div class="pp__end"><img src="img/logo.png" alt=""><span>SINO TIB</span><i></i></div>
     </div>
   </section>
 

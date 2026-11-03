@@ -195,7 +195,7 @@ ul, ol { list-style: none; }
   padding: 0;
   background: var(--green);
   color: #fff;
-  text-shadow: 0 1px 6px rgb(0 0 0 / 35%);
+  text-shadow: 0 2px 6px rgb(0 0 0 / 70%), 0 0 2px rgb(0 0 0 / 35%);
 }
 
 .pp__bg {
@@ -207,23 +207,38 @@ ul, ol { list-style: none; }
 }
 
 /* Matn o'qilishi uchun faqat yuqori va pastki chetlar biroz qoraytiriladi */
+/* Matn o'qilishi uchun faqat yuqori va pastki chetlar qoraytiriladi */
 .pp__shade {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background: linear-gradient(180deg,
-    rgb(4 24 14 / 84%) 0%,
-    rgb(4 24 14 / 64%) 20%,
-    rgb(4 24 14 / 0%) 37%,
-    rgb(4 24 14 / 0%) 84%,
-    rgb(4 24 14 / 60%) 100%);
+    rgb(4 24 14 / 80%) 0%,
+    rgb(4 24 14 / 52%) 15%,
+    rgb(4 24 14 / 0%) 31%,
+    rgb(4 24 14 / 0%) 69%,
+    rgb(4 24 14 / 58%) 83%,
+    rgb(4 24 14 / 88%) 100%);
 }
 
 .pp__head {
   position: relative;
   z-index: 1;
-  padding: 10mm 14mm 0;
+  padding: 8mm 14mm 0;
 }
+
+/* Yuqorida: katta logotip va uning ostida chiziq */
+.pp__top {
+  display: flex;
+  align-items: center;
+  gap: 3.5mm;
+  padding-bottom: 2.5mm;
+  border-bottom: .4mm solid rgb(255 255 255 / 80%);
+  font: 700 26pt/1 var(--display);
+  letter-spacing: .03em;
+}
+
+.pp__top img { width: 14mm; filter: drop-shadow(0 1px 3px rgb(0 0 0 / 45%)); }
 
 .pp__brand {
   display: flex;
@@ -252,60 +267,60 @@ ul, ol { list-style: none; }
 }
 
 .pp__title {
-  margin-top: 6.5mm;
-  font: 700 35pt/1.02 var(--display);
-  letter-spacing: -.005em;
+  margin-top: 4mm;
+  font: 700 44pt/1 var(--display);
+  letter-spacing: -.01em;
   text-transform: uppercase;
-  text-shadow: 0 2px 14px rgb(0 0 0 / 40%);
+  white-space: nowrap;
+  text-shadow: 0 3px 12px rgb(0 0 0 / 65%), 0 1px 2px rgb(0 0 0 / 45%);
 }
 
 .pp__sub {
-  margin-top: 2.5mm;
-  font: 600 12.5pt/1.25 var(--display);
-  letter-spacing: .04em;
+  margin-top: 1mm;
+  font: 700 18pt/1.15 var(--display);
+  letter-spacing: .01em;
   text-transform: uppercase;
-  color: var(--gold-2);
+  white-space: nowrap;
 }
 
+/* Ikonkalar: 3 ustun, ikonka chapda, yozuv o'ngda */
 .pp__icons {
-  display: flex;
-  gap: 1.5mm;
-  margin-top: 5mm;
+  display: grid;
+  grid-template-columns: repeat(3, 58mm);
+  gap: 3mm 4mm;
+  margin-top: 4mm;
 }
 
 .pp__icons li {
-  width: 29.2mm;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: .7mm;
-  text-align: center;
+  gap: 2.5mm;
+  min-height: 11mm;
 }
 
 .medal {
-  width: 13.5mm;
-  height: 13.5mm;
-  margin-bottom: 1.5mm;
+  flex: none;
+  width: 11mm;
+  height: 11mm;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #fbe9b0, #d9aa45 55%, #a9781d);
-  box-shadow: 0 1px 5px rgb(0 0 0 / 40%), inset 0 0 0 .3mm rgb(255 255 255 / 35%);
-  color: #33240a;
+  background: radial-gradient(circle at 35% 28%, #fdf0c4 0%, #e3b858 45%, #b07f22 85%, #8a5f14 100%);
+  box-shadow:
+    0 2px 6px rgb(0 0 0 / 50%),
+    inset 0 0 0 .35mm rgb(120 82 20 / 55%),
+    inset 0 .5mm 0 rgb(255 255 255 / 55%);
+  color: #3a2808;
 }
 
-.medal .ic { width: 7.6mm; height: 7.6mm; stroke-width: 1.7; }
+.medal .ic { width: 6.4mm; height: 6.4mm; stroke-width: 1.8; }
 
 .pp__icons b {
-  font: 700 8.2pt/1.2 var(--display);
-  letter-spacing: .02em;
+  font: 700 10.5pt/1.12 var(--display);
+  letter-spacing: .01em;
   text-transform: uppercase;
 }
 
-.pp__icons small {
-  font: 500 7pt/1.25 var(--body);
-  color: rgb(255 255 255 / 85%);
-}
 
 .pp__foot {
   position: absolute;
@@ -313,8 +328,27 @@ ul, ol { list-style: none; }
   right: 0;
   bottom: 0;
   z-index: 1;
-  padding: 0 14mm 9mm;
+  padding: 0 0 8mm 14mm;
 }
+
+/* Pastda: qisqa tavsif va logotipli chiziq (o'ng chetgacha) */
+.pp__desc {
+  padding-right: 8mm;
+  font: 600 13.5pt/1.6 var(--body);
+  text-shadow: 0 2px 8px rgb(0 0 0 / 80%), 0 0 2px rgb(0 0 0 / 45%);
+}
+
+.pp__end {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  margin-top: 5mm;
+  font: 700 22pt/1 var(--display);
+  letter-spacing: .03em;
+}
+
+.pp__end img { width: 12mm; filter: drop-shadow(0 1px 3px rgb(0 0 0 / 45%)); }
+.pp__end i { flex: 1; height: .5mm; margin-left: 2mm; background: rgb(255 255 255 / 80%); }
 
 .pp__langs {
   display: grid;

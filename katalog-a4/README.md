@@ -4,7 +4,7 @@
 
 | Sahifa | Mazmuni |
 | --- | --- |
-| 1–38 | Har bir mahsulot ikki sahifada: chapda (toq) asl rasm, ustida nomi va ikonkalar; o‘ngda (juft) xuddi shu fonda 4 tilda (UZ, RU, EN, KZ): tavsif, tarkibi, qo‘llash usuli, saqlash, qarshi ko‘rsatmalar |
+| 1–38 | Har bir mahsulot ikki sahifada: chapda (toq) asl rasm, ustida katta logotip, nomi va ikonkalar (3 ustun), pastda qisqa tavsif; o‘ngda (juft) xuddi shu fonda 4 tilda (UZ, RU, EN, KZ): tavsif, tarkibi, qo‘llash usuli, saqlash, qarshi ko‘rsatmalar |
 | 39 | Buyurtma berish va tavsiyalar |
 | 40 | Narxlar ro‘yxati |
 | 41 | Orqa muqova: aloqa, QR kod |
@@ -18,8 +18,10 @@ Shriftlar statik TTF (`fonts/`): Montserrat, Inter (qozoq kirilini to‘liq qo�
 
 [SINO-TIB-katalog-SVG.zip](SINO-TIB-katalog-SVG.zip) — har bir sahifa alohida SVG (A4):
 
-- `1-matnli` — matn tahrirlanadi (har bir paragraf bitta matn obyekti); avval `shriftlar/` dagi 8 ta TTF ni o‘rnating.
-- `2-egri chiziqli` — matn egri chiziqlarga aylantirilgan, shriftsiz ham bir xil ko‘rinadi.
+- `1-matnli` — matn tahrirlanadi (har bir paragraf bitta matn obyekti); avval `shriftlar/` dagi 8 ta TTF ni o‘rnating. Matn soyasi yo‘q.
+- `2-egri chiziqli` — matn egri chiziqlarga aylantirilgan, shriftsiz ham bir xil ko‘rinadi; soyalar bilan, PDF bilan bir xil.
+
+Uzun mahsulot nomi va tavsifi bir qatorga sig‘guncha avtomatik kichraytiriladi (`katalog.js`, `fitText`).
 
 Katalog o‘zgargach sahifalar va SVG’ni qayta yasash (`katalog-a4` papkasida):
 

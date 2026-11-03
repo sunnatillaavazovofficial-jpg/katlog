@@ -12,6 +12,8 @@ const fs = require('fs');
   const p = await b.newPage({ viewport: { width: 900, height: 1200 }, deviceScaleFactor: DPI / 96 });
   p.on('pageerror', (e) => console.log('ERR', e.message));
   await p.goto(url);
+  // katalog.js uzun sarlavhalarni moslab bo'lgach belgi qo'yadi
+  await p.waitForFunction(() => document.documentElement.dataset.ready === '1', null, { timeout: 15000 }).catch(() => {});
   await p.emulateMedia({ media: 'print' });
   await p.evaluate(async () => {
     await document.fonts.ready;
@@ -104,9 +106,16 @@ const fs = require('fs');
   });
   fs.writeFileSync(`${out}/layout.json`, JSON.stringify(data));
 
-  // Fon: matn va ikonkalar yashiriladi (joylashuv o'zgarmaydi), qolgani rasmga olinadi
-  await p.addStyleTag({ content: '*{-webkit-text-fill-color:transparent!important;text-shadow:none!important} svg.ic use{visibility:hidden!important}' });
-  const pages = await p.$$('section.page');
+  // Fon: matn va ikonkalar yashiriladi (joylashuv o'zgarmaydi), qolgani rasmga olinadi.
+  // bgs-XX — matn soyasi bilan (egri chiziqli SVG uchun: PDF bilan bir xil ko'rinish)
+  // bg-XX  — soyasiz (matnli SVG uchun: matn o'zgartirilsa, eski soya qolmaydi)
+  await p.addStyleTag({ content: '*{-webkit-text-fill-color:transparent!important} svg.ic use{visibility:hidden!important}' });
+  let pages = await p.$$('section.page');
+  for (let i = 0; i < pages.length; i++) {
+    await pages[i].screenshot({ path: `${out}/bgs-${String(i + 1).padStart(2, '0')}.jpg`, type: 'jpeg', quality: 86 });
+  }
+  await p.addStyleTag({ content: '*{text-shadow:none!important}' });
+  pages = await p.$$('section.page');
   for (let i = 0; i < pages.length; i++) {
     await pages[i].screenshot({ path: `${out}/bg-${String(i + 1).padStart(2, '0')}.jpg`, type: 'jpeg', quality: 86 });
   }

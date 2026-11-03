@@ -2,7 +2,7 @@
 (() => {
   "use strict";
 
-  const VERSION = 6; // shablon o'zgarsa oshiriladi — eski saqlangan nusxa e'tiborga olinmaydi
+  const VERSION = 7; // shablon o'zgarsa oshiriladi — eski saqlangan nusxa e'tiborga olinmaydi
   const KEY = `sinotib-katalog-v${VERSION}`;
   const TEXT = ".page :is(h1, h2, h3, h4, p, li > span, dt, dd, b, small, figcaption, td:not(:has(*)), .e)";
 
@@ -57,7 +57,10 @@
 
   editBtn.addEventListener("click", () => setEditing(!editing));
 
-  book.addEventListener("input", save);
+  book.addEventListener("input", (e) => {
+    if (e.target.closest(".pp__title, .pp__sub")) fitText();
+    save();
+  });
 
   // Formatlangan matn emas, oddiy matn qo'yiladi
   book.addEventListener("paste", (e) => {
@@ -137,6 +140,24 @@
     toastTimer = setTimeout(() => el.classList.remove("is-visible"), 2400);
   }
 
+  /* Uzun nom va tavsif bir qatorga sig'guncha shrift kichraytiriladi */
+  function fitText() {
+    book.querySelectorAll(".pp__title, .pp__sub").forEach((el) => {
+      el.style.fontSize = "";
+      let size = parseFloat(getComputedStyle(el).fontSize);
+      const min = size * 0.55;
+      while (el.scrollWidth > el.clientWidth + 1 && size > min) {
+        size -= 0.5;
+        el.style.fontSize = `${size}px`;
+      }
+    });
+  }
+
   restore();
   fit();
+  // Eksport skriptlari shu belgini kutadi (tools/svg-eksport.js)
+  document.fonts.ready.then(() => {
+    fitText();
+    document.documentElement.dataset.ready = "1";
+  });
 })();
