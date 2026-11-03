@@ -212,9 +212,9 @@ ul, ol { list-style: none; }
   inset: 0;
   pointer-events: none;
   background: linear-gradient(180deg,
-    rgb(4 24 14 / 82%) 0%,
-    rgb(4 24 14 / 60%) 17%,
-    rgb(4 24 14 / 0%) 33%,
+    rgb(4 24 14 / 84%) 0%,
+    rgb(4 24 14 / 64%) 20%,
+    rgb(4 24 14 / 0%) 37%,
     rgb(4 24 14 / 0%) 84%,
     rgb(4 24 14 / 60%) 100%);
 }
@@ -222,7 +222,7 @@ ul, ol { list-style: none; }
 .pp__head {
   position: relative;
   z-index: 1;
-  padding: 11mm 14mm 0;
+  padding: 10mm 14mm 0;
 }
 
 .pp__brand {
@@ -233,7 +233,7 @@ ul, ol { list-style: none; }
   letter-spacing: .14em;
 }
 
-.pp__brand img { width: 9mm; }
+.pp__brand img { width: 10mm; }
 
 .pp__brand::after {
   content: "";
@@ -252,58 +252,59 @@ ul, ol { list-style: none; }
 }
 
 .pp__title {
-  margin-top: 2.5mm;
-  font: 700 29pt/1.02 var(--display);
+  margin-top: 6.5mm;
+  font: 700 35pt/1.02 var(--display);
   letter-spacing: -.005em;
   text-transform: uppercase;
   text-shadow: 0 2px 14px rgb(0 0 0 / 40%);
 }
 
 .pp__sub {
-  margin-top: 2mm;
-  font: 600 10.5pt/1.25 var(--display);
+  margin-top: 2.5mm;
+  font: 600 12.5pt/1.25 var(--display);
   letter-spacing: .04em;
   text-transform: uppercase;
+  color: var(--gold-2);
 }
 
 .pp__icons {
   display: flex;
-  gap: 2.5mm;
+  gap: 1.5mm;
   margin-top: 5mm;
 }
 
 .pp__icons li {
-  width: 28mm;
+  width: 29.2mm;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .6mm;
+  gap: .7mm;
   text-align: center;
 }
 
 .medal {
-  width: 10mm;
-  height: 10mm;
-  margin-bottom: 1mm;
+  width: 13.5mm;
+  height: 13.5mm;
+  margin-bottom: 1.5mm;
   display: grid;
   place-items: center;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #fbe9b0, #d9aa45 55%, #a9781d);
-  box-shadow: 0 1px 4px rgb(0 0 0 / 35%), inset 0 0 0 .3mm rgb(255 255 255 / 35%);
+  box-shadow: 0 1px 5px rgb(0 0 0 / 40%), inset 0 0 0 .3mm rgb(255 255 255 / 35%);
   color: #33240a;
 }
 
-.medal .ic { width: 5.6mm; height: 5.6mm; stroke-width: 1.7; }
+.medal .ic { width: 7.6mm; height: 7.6mm; stroke-width: 1.7; }
 
 .pp__icons b {
-  font: 700 6.6pt/1.15 var(--display);
-  letter-spacing: .03em;
+  font: 700 8.2pt/1.2 var(--display);
+  letter-spacing: .02em;
   text-transform: uppercase;
 }
 
 .pp__icons small {
-  font: 500 6pt/1.2 var(--body);
-  color: rgb(255 255 255 / 80%);
+  font: 500 7pt/1.25 var(--body);
+  color: rgb(255 255 255 / 85%);
 }
 
 .pp__foot {
@@ -347,9 +348,9 @@ ul, ol { list-style: none; }
 .pp__bar {
   display: flex;
   align-items: center;
-  gap: 2.5mm;
+  gap: 3mm;
   margin-top: 5.5mm;
-  font: 600 8pt/1 var(--display);
+  font: 600 9pt/1 var(--display);
   letter-spacing: .14em;
 }
 
@@ -393,8 +394,8 @@ ul, ol { list-style: none; }
 }
 
 .inf__title {
-  margin-top: 2.5mm;
-  font: 700 27pt/1.05 var(--display);
+  margin-top: 3mm;
+  font: 700 33pt/1.04 var(--display);
   letter-spacing: -.005em;
   text-transform: uppercase;
   text-shadow: 0 2px 14px rgb(0 0 0 / 40%);
@@ -403,26 +404,30 @@ ul, ol { list-style: none; }
 .inf__langs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8mm 8mm;
-  margin-top: 9mm;
+  gap: 11mm 10mm;
+  margin-top: 12mm;
 }
 
 .inf__lang {
-  padding-top: 4mm;
-  border-top: .3mm solid rgb(228 197 127 / 55%);
+  padding-top: 5mm;
+  border-top: .4mm solid rgb(228 197 127 / 65%);
 }
 
-.inf__lang .lang__tag { margin-bottom: 3mm; }
+.inf__lang .lang__tag {
+  margin-bottom: 3.5mm;
+  padding: 1.3mm 3mm;
+  font-size: 9pt;
+}
 
 .inf__lang h4 {
-  margin-bottom: 2mm;
-  font: 700 10pt/1.3 var(--display);
+  margin-bottom: 3mm;
+  font: 700 13.5pt/1.25 var(--display);
 }
 
 .inf__lang p {
-  font-size: 9pt;
-  line-height: 1.55;
-  color: rgb(255 255 255 / 92%);
+  font-size: 11.2pt;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 94%);
 }
 
 .inf__specs {
@@ -438,7 +443,7 @@ ul, ol { list-style: none; }
 }
 
 .inf__specs dt {
-  font: 700 7.5pt/1.2 var(--display);
+  font: 700 8.6pt/1.2 var(--display);
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--gold-2);
@@ -446,16 +451,16 @@ ul, ol { list-style: none; }
 
 .inf__specs dt small {
   display: block;
-  margin-top: 1mm;
-  font: 500 6.6pt/1.3 var(--body);
+  margin-top: 1.2mm;
+  font: 500 7.4pt/1.3 var(--body);
   letter-spacing: .02em;
   text-transform: none;
-  color: rgb(255 255 255 / 72%);
+  color: rgb(255 255 255 / 75%);
 }
 
 .inf__specs dd {
-  margin-top: 2.5mm;
-  font: 600 12.5pt/1.1 var(--display);
+  margin-top: 3mm;
+  font: 600 15pt/1.1 var(--display);
 }
 
 .inf .pp__bar { margin-top: 8mm; }
