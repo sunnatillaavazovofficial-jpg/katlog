@@ -1,17 +1,18 @@
 # SINO TIB — A4 katalog
 
-22 sahifali, chop etishga tayyor A4 katalog. Tayyor PDF: [SINO-TIB-katalog.pdf](SINO-TIB-katalog.pdf).
+41 sahifali, chop etishga tayyor A4 katalog. Tayyor PDF: [SINO-TIB-katalog.pdf](SINO-TIB-katalog.pdf).
 
 | Sahifa | Mazmuni |
 | --- | --- |
-| 1–19 | Har bir mahsulot alohida sahifada: asl rasm, ustida nomi va ikonkalar, pastda 3 tilda (UZ, RU, EN) ma’lumot |
-| 20 | Buyurtma berish va tavsiyalar |
-| 21 | Narxlar ro‘yxati |
-| 22 | Orqa muqova: aloqa, QR kod |
+| 1–38 | Har bir mahsulot ikki sahifada: chapda (toq) asl rasm, ustida nomi va ikonkalar; o‘ngda (juft) xuddi shu fonda 4 tilda (UZ, RU, EN, KZ) to‘liq ma’lumot |
+| 39 | Buyurtma berish va tavsiyalar |
+| 40 | Narxlar ro‘yxati |
+| 41 | Orqa muqova: aloqa, QR kod |
 
 `img/mahsulot/` — GitHub'ga yuklangan asl rasmlar, o‘zgartirilmagan.
+`img/fon/` — o‘sha rasmlardan mahsulot olib tashlangan fon (ma’lumot sahifalari uchun).
 
-Shriftlar statik TTF (`fonts/`).
+Shriftlar statik TTF (`fonts/`): Montserrat, Inter (qozoq kirilini to‘liq qo‘llaydi), Great Vibes.
 
 ## CorelDRAW uchun SVG
 
@@ -42,8 +43,8 @@ python3 tools/svg-yasash.py /tmp/svg-xom fonts svg  # svg/matn va svg/egri
 
 Ekranda sariq punktir chiziq bilan belgilangan. Bu chiziq chop etilmaydi.
 
-- **Nomi yozilmagan mahsulotlar** (15–19-sahifalar, "Mahsulot nomi"): kulrang idish, qora shisha va 3 ta to‘q sariq banka.
+- **Nomi yozilmagan mahsulotlar** (29–38-sahifalar, "Mahsulot nomi"): kulrang idish, qora shisha va 3 ta to‘q sariq banka.
 - **Vazifasi aniq bo‘lmagan mahsulotlar**: Giyohli damlama (ko‘k), Sinomum, Tabon, Rosebud Tibet. Ularning tavsifi umumiy yozilgan.
 - **Tekshirish kerak**: "Buyrak damlamasi" va "Bo‘g‘im moyi" nomlari yorliqdagi yozuvdan o‘qib olingan.
-- **Narxlar**: 21-sahifadagi ro‘yxatda.
+- **Narxlar**: har bir ma’lumot sahifasida va 40-sahifadagi ro‘yxatda.
 - **Aloqa**: telefon, Telegram, Instagram.

@@ -21,10 +21,10 @@ FACES = {
     ("Montserrat", 500): ("Montserrat-500.ttf", "Montserrat Medium", "normal"),
     ("Montserrat", 600): ("Montserrat-600.ttf", "Montserrat SemiBold", "normal"),
     ("Montserrat", 700): ("Montserrat-700.ttf", "Montserrat", "bold"),
-    ("Manrope", 400): ("Manrope-400.ttf", "Manrope", "normal"),
-    ("Manrope", 500): ("Manrope-500.ttf", "Manrope Medium", "normal"),
-    ("Manrope", 600): ("Manrope-600.ttf", "Manrope SemiBold", "normal"),
-    ("Manrope", 700): ("Manrope-700.ttf", "Manrope", "bold"),
+    ("Inter", 400): ("Inter-400.ttf", "Inter", "normal"),
+    ("Inter", 500): ("Inter-500.ttf", "Inter Medium", "normal"),
+    ("Inter", 600): ("Inter-600.ttf", "Inter SemiBold", "normal"),
+    ("Inter", 700): ("Inter-700.ttf", "Inter", "bold"),
     ("Great Vibes", 400): ("GreatVibes-400.ttf", "Great Vibes", "normal"),
 }
 fonts = {}

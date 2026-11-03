@@ -17,7 +17,7 @@
   --line: #e2dbca;
 
   --display: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-  --body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
   --script: "Great Vibes", "Brush Script MT", cursive;
 
   --pad-x: 18mm;
@@ -213,11 +213,10 @@ ul, ol { list-style: none; }
   pointer-events: none;
   background: linear-gradient(180deg,
     rgb(4 24 14 / 82%) 0%,
-    rgb(4 24 14 / 58%) 16%,
-    rgb(4 24 14 / 0%) 31%,
-    rgb(4 24 14 / 0%) 66%,
-    rgb(4 24 14 / 72%) 80%,
-    rgb(4 24 14 / 92%) 100%);
+    rgb(4 24 14 / 60%) 17%,
+    rgb(4 24 14 / 0%) 33%,
+    rgb(4 24 14 / 0%) 84%,
+    rgb(4 24 14 / 60%) 100%);
 }
 
 .pp__head {
@@ -358,6 +357,108 @@ ul, ol { list-style: none; }
 .pp__bar i { flex: 1; height: .3mm; background: rgb(255 255 255 / 50%); }
 .pp__spec { color: var(--gold-2); letter-spacing: .06em; }
 .pp__n { color: rgb(255 255 255 / 70%); letter-spacing: .05em; }
+
+/* ---------- O'ng sahifa: 4 tilda to'liq ma'lumot ---------- */
+
+.inf {
+  padding: 0;
+  background: var(--green);
+  color: #fff;
+  text-shadow: 0 1px 6px rgb(0 0 0 / 30%);
+}
+
+.inf__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Fon — o'sha rasmning o'zi (mahsulotsiz), matn o'qilishi uchun qoraytirilgan */
+.inf__shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgb(4 24 14 / 74%) 0%, rgb(4 24 14 / 60%) 40%, rgb(4 24 14 / 70%) 75%, rgb(4 24 14 / 88%) 100%);
+}
+
+.inf__body {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 11mm 14mm 9mm;
+}
+
+.inf__title {
+  margin-top: 2.5mm;
+  font: 700 27pt/1.05 var(--display);
+  letter-spacing: -.005em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px rgb(0 0 0 / 40%);
+}
+
+.inf__langs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8mm 8mm;
+  margin-top: 9mm;
+}
+
+.inf__lang {
+  padding-top: 4mm;
+  border-top: .3mm solid rgb(228 197 127 / 55%);
+}
+
+.inf__lang .lang__tag { margin-bottom: 3mm; }
+
+.inf__lang h4 {
+  margin-bottom: 2mm;
+  font: 700 10pt/1.3 var(--display);
+}
+
+.inf__lang p {
+  font-size: 9pt;
+  line-height: 1.55;
+  color: rgb(255 255 255 / 92%);
+}
+
+.inf__specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5mm;
+  margin-top: auto;
+}
+
+.inf__specs div {
+  padding-top: 3.5mm;
+  border-top: .3mm solid rgb(228 197 127 / 55%);
+}
+
+.inf__specs dt {
+  font: 700 7.5pt/1.2 var(--display);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+}
+
+.inf__specs dt small {
+  display: block;
+  margin-top: 1mm;
+  font: 500 6.6pt/1.3 var(--body);
+  letter-spacing: .02em;
+  text-transform: none;
+  color: rgb(255 255 255 / 72%);
+}
+
+.inf__specs dd {
+  margin-top: 2.5mm;
+  font: 600 12.5pt/1.1 var(--display);
+}
+
+.inf .pp__bar { margin-top: 8mm; }
 
 /* ---------- Narxlar ro'yxati ---------- */
 
@@ -605,6 +706,16 @@ ul, ol { list-style: none; }
   text-align: center;
   font-size: 7.5pt;
   color: rgb(243 239 228 / 55%);
+}
+
+/* Ekranda kitob ko'rinishi: mahsulot rasmi va ma'lumoti yonma-yon */
+@media screen {
+  .book--spread {
+    display: grid;
+    grid-template-columns: repeat(2, 210mm);
+    justify-content: center;
+    gap: 12mm 0;
+  }
 }
 
 /* ==========================================================================
