@@ -14,22 +14,33 @@
 
 Shriftlar statik TTF (`fonts/`): Montserrat, Inter (qozoq kirilini to‘liq qo‘llaydi), Great Vibes.
 
-## CorelDRAW uchun SVG
+## CorelDRAW uchun
 
-[SINO-TIB-katalog-SVG.zip](SINO-TIB-katalog-SVG.zip) — har bir sahifa alohida SVG (A4):
+`.cdr` faylni faqat CorelDRAW’ning o‘zi yoza oladi. Shuning uchun Corel bitta hujjat qilib ochadigan PDF tayyorlangan — uni ochib, `.cdr` qilib saqlaysiz.
 
-- `1-matnli` — matn tahrirlanadi (har bir paragraf bitta matn obyekti); avval `shriftlar/` dagi 8 ta TTF ni o‘rnating. Matn soyasi yo‘q.
-- `2-egri chiziqli` — matn egri chiziqlarga aylantirilgan, shriftsiz ham bir xil ko‘rinadi; soyalar bilan, PDF bilan bir xil.
+1. [shriftlar.zip](shriftlar.zip) dagi 8 ta TTF ni o‘rnating (har birini ikki marta bosing → **Установить**). **Bu shart** — aks holda matn boshqa shrift bilan chiqib, fondagi soyaga mos tushmaydi.
+2. CorelDRAW → **File → Open** → [SINO-TIB-Corel.pdf](SINO-TIB-Corel.pdf). Import oynasida **Import text as: Text**.
+3. 41 sahifali hujjat ochiladi → **File → Save As → CorelDRAW (*.cdr)**.
+
+`SINO-TIB-Corel.pdf` har bir sahifada: bitta fon rasmi, vektor ikonkalar va tahrirlanadigan matn (Chrome PDF’idagi minglab mayda soya bo‘laklari yo‘q). Matn soyasi fon rasmida; `[kvadrat qavsdagi]` joylarda soya yo‘q — almashtirganda eski soya qolmaydi.
+
+### SVG (har bir sahifa alohida)
+
+[SINO-TIB-katalog-SVG.zip](SINO-TIB-katalog-SVG.zip) — agar PDF ochilmasa:
+
+- `1-matnli` — matn tahrirlanadi (har bir paragraf bitta matn obyekti); avval `shriftlar/` dagi 8 ta TTF ni o‘rnating.
+- `2-egri chiziqli` — matn egri chiziqlarga aylantirilgan, shriftsiz ham bir xil ko‘rinadi.
 
 Uzun mahsulot nomi va tavsifi bir qatorga sig‘guncha avtomatik kichraytiriladi (`katalog.js`, `fitText`).
 
-Katalog o‘zgargach sahifalar va SVG’ni qayta yasash (`katalog-a4` papkasida):
+Katalog o‘zgargach sahifalar, SVG va Corel PDF’ni qayta yasash (`katalog-a4` papkasida; `pip install reportlab svglib fonttools`):
 
 ```
 python3 tools/sahifalar.py index.html               # mahsulot sahifalari (matnlar shu faylda)
 python3 -m http.server 8766 &
 node tools/svg-eksport.js /tmp/svg-xom              # matn o‘rni + fon rasmlari
 python3 tools/svg-yasash.py /tmp/svg-xom fonts svg  # svg/matn va svg/egri
+python3 tools/corel-pdf.py /tmp/svg-xom fonts SINO-TIB-Corel.pdf
 ```
 
 ## Matn va rasmlarni o‘zgartirish

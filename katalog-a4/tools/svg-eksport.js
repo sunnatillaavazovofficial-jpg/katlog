@@ -107,15 +107,10 @@ const fs = require('fs');
   fs.writeFileSync(`${out}/layout.json`, JSON.stringify(data));
 
   // Fon: matn va ikonkalar yashiriladi (joylashuv o'zgarmaydi), qolgani rasmga olinadi.
-  // bgs-XX — matn soyasi bilan (egri chiziqli SVG uchun: PDF bilan bir xil ko'rinish)
-  // bg-XX  — soyasiz (matnli SVG uchun: matn o'zgartirilsa, eski soya qolmaydi)
-  await p.addStyleTag({ content: '*{-webkit-text-fill-color:transparent!important} svg.ic use{visibility:hidden!important}' });
-  let pages = await p.$$('section.page');
-  for (let i = 0; i < pages.length; i++) {
-    await pages[i].screenshot({ path: `${out}/bgs-${String(i + 1).padStart(2, '0')}.jpg`, type: 'jpeg', quality: 86 });
-  }
-  await p.addStyleTag({ content: '*{text-shadow:none!important}' });
-  pages = await p.$$('section.page');
+  // Matn soyasi fonda qoladi, faqat to'ldiriladigan joylarda (.ph) yo'q —
+  // ular Corel'da almashtirilganda eski yozuvning soyasi qolib ketmasligi uchun.
+  await p.addStyleTag({ content: '*{-webkit-text-fill-color:transparent!important} .ph{text-shadow:none!important} svg.ic use{visibility:hidden!important}' });
+  const pages = await p.$$('section.page');
   for (let i = 0; i < pages.length; i++) {
     await pages[i].screenshot({ path: `${out}/bg-${String(i + 1).padStart(2, '0')}.jpg`, type: 'jpeg', quality: 86 });
   }

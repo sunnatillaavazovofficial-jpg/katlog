@@ -106,12 +106,8 @@ for variant in ("matn", "egri"):
 for i, pg in enumerate(data["pages"], 1):
     w, h = num(pg["w"]), num(pg["h"])
     icons = "\n".join(icon_svg(ic, data["symbols"]) for ic in pg["icons"])
+    bg = base64.b64encode(open(os.path.join(SRC, f"bg-{i:02d}.jpg"), "rb").read()).decode()
     for variant in ("matn", "egri"):
-        # egri: fon matn soyasi bilan; matn: soyasiz (tahrirlanganda eski soya qolmasin)
-        bg_file = f"bgs-{i:02d}.jpg" if variant == "egri" else f"bg-{i:02d}.jpg"
-        if not os.path.exists(os.path.join(SRC, bg_file)):
-            bg_file = f"bg-{i:02d}.jpg"
-        bg = base64.b64encode(open(os.path.join(SRC, bg_file), "rb").read()).decode()
         head = (f'<?xml version="1.0" encoding="UTF-8"?>\n'
                 f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" '
                 f'width="210mm" height="297mm" viewBox="0 0 {w} {h}">\n'
